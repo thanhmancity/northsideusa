@@ -547,5 +547,96 @@
   <%= javascript_include_tag 'home.js' %>
   <!-- include custom script for site  -->
   <%= javascript_include_tag 'script.js' %>
+
+  <%= javascript_include_tag 'hideMaxListItem-min.js' %>
+  <script>
+      $(document).ready(function () {
+          $('ul.long-list').hideMaxListItems({
+              'max': 6,
+              'speed': 500,
+              'moreText': 'VIEW MORE ([COUNT])',
+              'lessText': 'VIEW LESS',
+              'moreHTML': '<p class="maxlist-more"><a href="#">MORE OF THEM</a></p>'
+          });
+      });
+  </script>
+
+  <!-- scrollme || onscroll parallax effect for category page  -->
+  <%= javascript_include_tag 'jquery.scrollme.min.js' %>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          var isMobile = function () {
+              //console.log("Navigator: " + navigator.userAgent);
+              return /(iphone|ipod|ipad|android|blackberry|windows ce|palm|symbian)/i.test(navigator.userAgent);
+          };
+
+          if (isMobile()) {
+              // For  mobile , ipad, tab
+              $('.animateme').removeClass('animateme');
+              $('.category-wrapper').addClass('ismobile');
+              $('.main-container-wrapper').addClass('ismobile');
+              $('#category-intro').addClass('ismobile');
+
+          } else {
+          }
+          $('.shrtByP a').click(function () {
+              $('.shrtByP a').removeClass('active');
+              $(this).addClass('active');
+          });
+
+
+          $('.filterToggle').click(function () {
+              $(this).toggleClass('filter-is-off');
+              $('.filterToggle span').toggleClass('is-off');
+              $('.catColumnWrapper').toggleClass('filter-is-off');
+              $('.catColumnWrapper .col-sm-4').toggleClass('col-sm-3 col-lg-3 col-md-3');
+
+              // equal height reload function
+
+              var $elements = $('.categoryProduct > .item');
+              var columns = $elements.detectGridColumns();
+              $elements.equalHeightGrid(columns);
+
+
+              setTimeout(function () {
+                          //  reload function after 0.5 second
+                          $('.categoryProduct > .item').responsiveEqualHeightGrid();
+                      }
+                      , 500);
+
+
+          });
+
+
+          $('[data-toggle="collapse"]').click(function (e) {
+
+              $('#accordion').on('show.bs.collapse', function (e) {
+                  $(e.target).prev().addClass('active').find('span').removeClass('hasPlus').addClass('hasMinus');
+              })
+
+              $('#accordion').on('hide.bs.collapse', function (e) {
+                  $(e.target).prev().addClass('active').find('span').addClass('hasPlus').removeClass('hasMinus');
+
+              })
+          });
+
+      }); // end
+
+
+      $(window).bind('resize load', function () {
+          if ($(this).width() < 767) {
+              $('#accordion .panel-collapse').collapse('hide');
+
+              $('#accordion .panel-heading ').find('span').removeClass('hasMinus').addClass('hasPlus');
+
+          } else {
+              $('#accordion .panel-collapse').removeClass('out').addClass('in').css('height', 'auto');
+              $('#accordion .panel-heading ').find('span').removeClass('hasPlus').addClass('hasMinus');
+
+
+          }
+      });
+
+  </script>
 </body>
 </html>
