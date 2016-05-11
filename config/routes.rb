@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'productlist' => 'productlist#index'
   get 'productmodal' => 'productmodal#index'
   get 'productdetail' => 'productdetail#index'
+  get 'cart' => 'cart#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
