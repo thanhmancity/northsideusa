@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'checkout/shipping'
+
+  get 'checkout/billing'
+
+  get 'checkout/delivery'
+
+  get 'checkout/payment'
+
+  get 'checkout/review'
+
   root 'welcome#index'
   get 'productlist' => 'productlist#index'
   get 'productmodal' => 'productmodal#index'
