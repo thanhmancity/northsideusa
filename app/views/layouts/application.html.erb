@@ -65,7 +65,7 @@
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span></button>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i class="fa fa-shopping-cart colorWhite"> </i> <span class="cartRespons colorWhite"> Cart ($210.00) </span></button>
-        <a class="navbar-brand " href="index.html"> <%= image_tag("Logo500.png", width: '120', alt: "Northside: Just for Fun") %> </a>
+        <a class="navbar-brand " href="/"> <%= image_tag("Logo500.png", width: '120', alt: "Northside: Just for Fun") %> </a>
 
         <!-- this part for mobile -->
         <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
@@ -73,7 +73,6 @@
             <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button>
           </div>
           <!-- /input-group -->
-
         </div>
       </div>
 
@@ -182,33 +181,40 @@
 
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#"> Home </a></li>
+          <li class="dropdown">
+            <a href="/" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Who We Are</a></li>
+              <li><a href="#">Brand Promise</a></li>
+              <li><a href="#">News</a></li>
+            </ul>
+          </li>
           <li class="dropdown megamenu-fullwidth">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Gender Option 1 <b class="caret"> </b> </a>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="/productlist">Men <b class="caret"> </b> </a>
             <ul class="dropdown-menu">
               <li class="megamenu-content ">
                 <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
-                  <li class="no-border"><p class="promo-1"><strong> THIS SEASON </strong></p></li>
-                  <li><a href="category.html"> ALL NEW PRODUCTS </a></li>
-                  <li><a href="category.html"> NEW HIKING SHOES </a></li>
-                  <li><a href="category.html"> NEW SANDALS </a></li>
-                  <li><a href="category.html"> NEW WATER SHOES </a></li>
-                  <li><a href="category.html"> ALL WOMEN'S SHOES </a></li>
+                  <li class="no-border"><p class="promo-1"><strong> This Season </strong></p></li>
+                  <li><a href="/productlist"> ALL NEW PRODUCTS </a></li>
+                  <li><a href="/productlist"> NEW HIKING SHOES </a></li>
+                  <li><a href="/productlist"> NEW SANDALS </a></li>
+                  <li><a href="/productlist"> NEW WATER SHOES </a></li>
+                  <li><a href="/productlist"> ALL WOMEN'S SHOES </a></li>
                 </ul>
                 <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
                   <li>
-                    <a class="newProductMenuBlock" href="product-details.html"> <%= image_tag("site/promo1.jpg", :class => "img-responsive") %> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> WOMEN'S HIKING </span>
+                    <a class="newProductMenuBlock" href="/productlist"> <%= image_tag("site/promo1.jpg", :class => "img-responsive") %> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> WOMEN'S HIKING </span>
                     </a>
                   </li>
                 </ul>
                 <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
                   <li>
-                    <a class="newProductMenuBlock" href="product-details.html"> <%= image_tag("site/promo2.jpg", :class => "img-responsive") %> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> WOMEN'S SANDALS </span> </a>
+                    <a class="newProductMenuBlock" href="/productlist"> <%= image_tag("site/promo2.jpg", :class => "img-responsive") %> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> WOMEN'S SANDALS </span> </a>
                   </li>
                 </ul>
                 <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
                   <li>
-                    <a class="newProductMenuBlock" href="product-details.html"> <%= image_tag("site/promo3.jpg", :class => "img-responsive") %> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> WOMEN'S WATER SHOES </span></a>
+                    <a class="newProductMenuBlock" href="/productlist"> <%= image_tag("site/promo3.jpg", :class => "img-responsive") %> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> WOMEN'S WATER SHOES </span></a>
                   </li>
                 </ul>
               </li>
@@ -217,7 +223,7 @@
 
           <!-- change width of megamenu = use class > megamenu-fullwidth, megamenu-60width, megamenu-40width -->
           <li class="dropdown megamenu-80width ">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> GENDER OPTION 2 <b class="caret"> </b> </a>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="/productlist"> Women <b class="caret"> </b> </a>
             <ul class="dropdown-menu">
               <li class="megamenu-content">
 
@@ -225,40 +231,40 @@
 
                 <ul class="col-lg-2  col-sm-2 col-md-2  unstyled noMarginLeft">
                   <li><p><strong> This Season </strong></p></li>
-                  <li><a href="#"> New Women's Hiking </a></li>
-                  <li><a href="#"> New Women's Sandals </a></li>
-                  <li><a href="#"> New Women's Water Shoes </a></li>
-                  <li><a href="#"> New Women's Shoes </a></li>
-                  <li><a href="#"> All Women's Shoes </a></li>
+                  <li><a href="/productlist"> New Women's Hiking </a></li>
+                  <li><a href="/productlist"> New Women's Sandals </a></li>
+                  <li><a href="/productlist"> New Women's Water Shoes </a></li>
+                  <li><a href="/productlist"> New Women's Shoes </a></li>
+                  <li><a href="/productlist"> All Women's Shoes </a></li>
                 </ul>
                 <ul class="col-lg-2  col-sm-2 col-md-2  unstyled">
                   <li><p><strong> Top Categories </strong></p></li>
-                  <li><a href="#"> Hiking </a></li>
-                  <li><a href="#"> Sandals </a></li>
-                  <li><a href="#"> Boots </a></li>
-                  <li><a href="#"> Water Shoes </a></li>
-                  <li><a href="#"> All Categories </a></li>
+                  <li><a href="/productlist"> Hiking </a></li>
+                  <li><a href="/productlist"> Sandals </a></li>
+                  <li><a href="/productlist"> Boots </a></li>
+                  <li><a href="/productlist"> Water Shoes </a></li>
+                  <li><a href="/productlist"> All Categories </a></li>
                 </ul>
                 <ul class="col-lg-2  col-sm-2 col-md-2  unstyled">
                   <li><p><strong> Top Styles </strong></p></li>
-                  <li><a href="#"> Abilene </a></li>
-                  <li><a href="#"> Brille </a></li>
-                  <li><a href="#"> Burke </a></li>
-                  <li><a href="#"> Kiva </a></li>
-                  <li><a href="#"> Mont Blanc </a></li>
-                  <li><a href="#"> Pioneer </a></li>
-                  <li><a href="#"> Trinidad </a></li>
+                  <li><a href="/productlist"> Abilene </a></li>
+                  <li><a href="/productlist"> Brille </a></li>
+                  <li><a href="/productlist"> Burke </a></li>
+                  <li><a href="/productlist"> Kiva </a></li>
+                  <li><a href="/productlist"> Mont Blanc </a></li>
+                  <li><a href="/productlist"> Pioneer </a></li>
+                  <li><a href="/productlist"> Trinidad </a></li>
                 </ul>
                 <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
                   <li class="no-margin productPopItem ">
-                    <a href="product-details.html"> <%= image_tag("site/g4.jpg", :class => "img-responsive") %> </a> <a class="text-center productInfo alpha90" href="product-details.html"> Burke II <br>
+                    <a href="/productdetail"> <%= image_tag("site/g4.jpg", :class => "img-responsive") %> </a> <a class="text-center productInfo alpha90" href="product-details.html"> Burke II <br>
                       <span> $29.99 </span>
                     </a>
                   </li>
                 </ul>
                 <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
                   <li class="no-margin productPopItem relative">
-                    <a href="product-details.html"> <%= image_tag("site/g5.jpg", :class => "img-responsive") %> </a> <a class="text-center productInfo alpha90" href="product-details.html"> Kiva <br>
+                    <a href="/productdetail"> <%= image_tag("site/g5.jpg", :class => "img-responsive") %> </a> <a class="text-center productInfo alpha90" href="product-details.html"> Kiva <br>
                       <span> $34.99 </span>
                     </a>
                   </li>
@@ -267,15 +273,26 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">ETC. <b class="caret"></b></a>
+            <a href="/productlist" class="dropdown-toggle" data-toggle="dropdown">Kids <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="/productlist">Kids' Hiking</a></li>
+              <li><a href="/productlist">Kids' Sandals</a></li>
+              <li><a href="/productlist">Kids' Water Shoes</a></li>
               <li class="divider"></li>
-              <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
+              <li class="dropdown-header">This Season</li>
+              <li><a href="/productlist">New Kids' Shoes</a></li>
+              <li><a href="/productlist">All Kids' Shoes</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="#"> Find a Retailer </a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Service <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Customer Service</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Return Policy</a></li>
             </ul>
           </li>
         </ul>
