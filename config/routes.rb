@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'about' => 'about#whoweare'
+  get 'about/whoweare'
+  get 'about/brandpromise'
+  get 'about/news'
+
   get 'productlist' => 'productlist#index'
   get 'productmodal' => 'productmodal#index'
   get 'productdetail' => 'productdetail#index'
