@@ -26,6 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Sass-powered version of Bootstrap
 gem 'bootstrap-sass'
 
+# MS SQL Server hooks
+gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
