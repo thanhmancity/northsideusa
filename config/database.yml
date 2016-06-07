@@ -10,20 +10,29 @@ default: &default
   timeout: 5000
 
 development:
-  adapter: sqlserver
-  host: 10.0.0.12 # used when dataserver is blank
-  database: SandBox
+  adapter: mysql2
+  encoding: utf8
+  database: ttt
   username: webuser
-  password: webuser
-  # default
-  port: 1433 # default is 1433
-  # default
-  mode: dblib
-  # dataserver: JEFFMAC-PC\MSSQLSERVER
-  timeout: 0
-  # timeout: 0 - to have no timeout
-  # azure: true
-  # dsn: <server_dsn>
+  password: password
+  host: 10.0.0.12
+  port: 3306
+
+#development:
+#  adapter: sqlserver
+#  host: ttttest.cadnpwyl2sev.us-west-2.rds.amazonaws.com # used when dataserver is blank
+#  database: ExcelPort
+#  username: tttuser
+#  password: tttpassword
+#  # default
+#  port: 1433 # default is 1433
+#  # default
+#  mode: dblib
+#  # dataserver: JEFFMAC-PC\MSSQLSERVER
+#  timeout: 0
+#  # timeout: 0 - to have no timeout
+#  # azure: true
+#  # dsn: <server_dsn>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
