@@ -1620,7 +1620,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 /* =============================================================== */
 
 .sliderImg {
-    background: url('../../images/site/loading1.gif') center center no-repeat; /* prealoder */
+  background: url(asset-path('loading1.gif')) center center no-repeat; /* prealoder */
 }
 
 .banner {
