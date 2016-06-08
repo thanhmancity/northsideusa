@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="assets/ico/favicon.png">
   // -->
-  <title>One</title>
+  <title>Northside USA</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -42,18 +42,13 @@
           <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
             <div class="pull-left ">
               <ul class="userMenu ">
-                <li><a href="#"> <span class="hidden-xs">HELP</span><i class="glyphicon glyphicon-info-sign hide visible-xs "></i> </a></li>
                 <li class="phone-number"><a href="callto:+18007912582"> <span> <i class="glyphicon glyphicon-phone-alt "></i></span> <span class="hidden-xs" style="margin-left:5px"> +1-800-791-2582 </span></a></li>
               </ul>
             </div>
           </div>
           <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
             <div class="pull-right">
-              <ul class="userMenu">
-                <li><a href="/account"><span class="hidden-xs"> My Account</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a></li>
-                <li><a href="#" data-toggle="modal" data-target="#ModalLogin"> <span class="hidden-xs">Sign In</span> <i class="glyphicon glyphicon-log-in hide visible-xs "></i> </a></li>
-                <li class="hidden-xs"><a href="#" data-toggle="modal" data-target="#ModalSignup"> Create Account </a></li>
-              </ul>
+              <!-- Account goo -->
             </div>
           </div>
         </div>
@@ -66,14 +61,6 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span></button>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i class="fa fa-shopping-cart colorWhite"> </i> <span class="cartRespons colorWhite"> Cart ($210.00) </span></button>
         <a class="navbar-brand " href="/"> <%= image_tag("Logo500.png", width: '120', alt: "Northside: Just for Fun") %> </a>
-
-        <!-- this part for mobile -->
-        <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
-          <div class="input-group">
-            <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button>
-          </div>
-          <!-- /input-group -->
-        </div>
       </div>
 
       <!-- this part is duplicate from cartMenu  keep it for mobile -->
@@ -401,15 +388,6 @@
             <!--/.dropdown-menu-->
           </div>
           <!--/.cartMenu-->
-
-          <div class="search-box">
-            <div class="input-group">
-              <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button>
-            </div>
-            <!-- /input-group -->
-          </div>
-          <!--/.search-box -->
-
         </div>
         <!--/.navbar-nav hidden-xs-->
       </div>
@@ -417,14 +395,6 @@
 
     </div>
     <!--/.container -->
-
-    <div class="search-full text-right"><a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
-      <div class="searchInputBox pull-right">
-        <input type="search" data-searchurl="search?=" name="q" placeholder="start typing and hit enter to search" class="search-input">
-        <button class="btn-nobg search-btn" type="submit"><i class="fa fa-search"> </i></button>
-      </div>
-    </div>
-    <!--/.search-full-->
 
   </div>
   <!-- /.Fixed navbar  -->
@@ -468,20 +438,18 @@
             <h3> Information </h3>
             <ul class="list-unstyled footer-nav">
               <li><a href="#"> About Us </a></li>
-              <li><a href="#"> Customer Service </a></li>
+              <li><a href="#"> Brand Promise </a></li>
               <li><a href="#"> Find a Retailer </a></li>
-              <li><a href="#"> Return Policy </a></li>
-              <li><a href="#"> Contact Us </a></li>
+              <li><a href="#"> News </a></li>
             </ul>
           </div>
           <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-            <h3> My Account </h3>
+            <h3>Customers</h3>
             <ul>
-              <li><a href="/account"> My Account </a></li>
-              <li><a href="/account"> My Address </a></li>
-              <li><a href="/account"> Wish List </a></li>
-              <li><a href="/account"> Order list </a></li>
-              <li><a href="/account"> Order Status </a></li>
+              <li><a href="#"> Contact Us </a></li>
+              <li><a href="#"> Terms of Service </a></li>
+              <li><a href="#"> Privacy Policy </a></li>
+              <li><a href="#"> Return Policy </a></li>
             </ul>
           </div>
 
@@ -498,11 +466,9 @@
               </li>
             </ul>
             <ul class="social">
-              <li><a href="http://facebook.com"> <i class=" fa fa-facebook"> &nbsp; </i> </a></li>
-              <li><a href="http://twitter.com"> <i class="fa fa-twitter"> &nbsp; </i> </a></li>
-              <li><a href="https://plus.google.com"> <i class="fa fa-google-plus"> &nbsp; </i> </a></li>
-              <li><a href="http://youtube.com"> <i class="fa fa-pinterest"> &nbsp; </i> </a></li>
-              <li><a href="http://youtube.com"> <i class="fa fa-youtube"> &nbsp; </i> </a></li>
+              <li><a href="http://facebook.com/NorthsideUSA" target="_blank"> <i class=" fa fa-facebook"> &nbsp; </i> </a></li>
+              <li><a href="http://twitter.com/NorthsideUSA" target="_blank"> <i class="fa fa-twitter"> &nbsp; </i> </a></li>
+              <li><a href="http://www.pinterest.com/northsideusa/" target="_blank"> <i class="fa fa-pinterest"> &nbsp; </i> </a></li>
             </ul>
           </div>
         </div>
@@ -515,15 +481,6 @@
     <div class="footer-bottom">
       <div class="container">
         <p class="pull-left"> &copy; Triple T Trading 2016. All right reserved. </p>
-
-        <div class="pull-right paymentMethodImg">
-          <%= image_tag("site/payment/master_card.png", :class => "pull-right", :height => "30") %>
-          <%= image_tag("site/payment/visa_card.png", :class => "pull-right", :height => "30") %>
-          <%= image_tag("site/payment/paypal.png", :class => "pull-right", :height => "30") %>
-          <%= image_tag("site/payment/american_express_card.png", :class => "pull-right", :height => "30") %>
-          <%= image_tag("site/payment/discover_network_card.png", :class => "pull-right", :height => "30") %>
-          <%= image_tag("site/payment/google_wallet.png", :class => "pull-right", :height => "30") %>
-        </div>
       </div>
     </div>
     <!--/.footer-bottom-->
