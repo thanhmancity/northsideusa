@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'about/whoweare'
   get 'about/brandpromise'
   get 'about/news'
+  get 'about/article'
 
   get 'productlist' => 'productlist#index'
   get 'productmodal' => 'productmodal#index'

@@ -7,4 +7,7 @@ class AboutController < ApplicationController
 
   def news
   end
+
+  def article
+  end
 end
