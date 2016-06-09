@@ -3062,6 +3062,7 @@ h5.parallaxSubtitle {
     font-size: 20px;
     font-weight: 200;
     color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 1px #FFFFFF;
 }
 
 /* =============================================================== */
@@ -4276,6 +4277,14 @@ tr.CartProduct td, tr.CartProduct th {
 
 .parallaxOffset.down {
     margin-top: 28px;
+}
+
+.parallax-image {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed; /* IE FIX */
 }
 
 .parallax-image-aboutus {
