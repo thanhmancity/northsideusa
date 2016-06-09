@@ -24,6 +24,16 @@ Rails.application.routes.draw do
   get 'order' => 'order/index'
   get 'order/index'
   get 'order/thankyou'
+
+  get 'returns/index'
+
+  get 'info/termsofservice'
+
+  get 'info/privacypolicy'
+
+  get 'contact_us/index'
+
+  get 'customer_service/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
