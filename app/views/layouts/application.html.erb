@@ -60,7 +60,7 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span></button>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i class="fa fa-shopping-cart colorWhite"> </i> <span class="cartRespons colorWhite"> Cart ($210.00) </span></button>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i class="fa fa-shopping-cart colorWhite"> </i> <span class="cartRespons colorWhite cart-subtotal"> Cart (<%= render 'layouts/cart_subtotal' %>) </span></button>
         <a class="navbar-brand " href="/"> <%= image_tag("Logo500.png", width: '120', alt: "Northside: Just for Fun") %> </a>
       </div>
 
@@ -156,7 +156,7 @@
           <!--/.miniCartTable-->
 
           <div class="miniCartFooter  miniCartFooterInMobile text-right">
-            <h3 class="text-right subtotal"> Subtotal: $214.95 </h3>
+            <h3 class="text-right subtotal cart-subtotal"> Subtotal: <%= render 'layouts/cart_subtotal' %> </h3>
             <a class="btn btn-sm btn-danger" href="/cart"> <i class="fa fa-shopping-cart"> </i> VIEW CART
             </a> <a href="/checkout" class="btn btn-sm btn-primary"> CHECKOUT </a>
           </div>
@@ -288,7 +288,7 @@
         <!--- this part will be hidden for mobile version -->
         <div class="nav navbar-nav navbar-right hidden-xs">
           <div class="dropdown  cartMenu ">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Cart ($214.95) </span> <b class="caret"> </b> </a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-shopping-cart"> </i> <span class="cartRespons cart-subtotal"> Cart (<%= render 'layouts/cart_subtotal' %>) </span> <b class="caret"> </b> </a>
 
             <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
               <div class="w100 miniCartTable scroll-pane">
@@ -380,7 +380,7 @@
               <!--/.miniCartTable-->
 
               <div class="miniCartFooter text-right">
-                <h3 class="text-right subtotal"> Subtotal: $214.95 </h3>
+                <h3 class="text-right subtotal cart-subtotal"> Subtotal: <%= render 'layouts/cart_subtotal' %> </h3>
                 <a class="btn btn-sm btn-danger" href="/cart"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a><a class="btn btn-sm btn-primary" href="/checkout"> CHECKOUT </a>
               </div>
               <!--/.miniCartFooter-->

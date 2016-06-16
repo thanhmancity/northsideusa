@@ -1,0 +1,114 @@
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  </p>
+<% else %>
+
+<div class="col-lg-9 col-md-9 col-sm-7">
+  <div class="row userInfo">
+    <div class="col-xs-12 col-sm-12">
+      <%#= form_for order_items, remote: true do |f| %>
+      <div class="cartContent w100">
+        <table class="cartTable table-responsive" style="width:100%">
+          <tbody>
+
+          <tr class="CartProduct cartTableHeader">
+            <td style="width:15%">Product</td>
+            <td style="width:40%">Details</td>
+            <td style="width:10%" class="delete">&nbsp;</td>
+            <td style="width:10%">QTY</td>
+            <td style="width:10%">Discount</td>
+            <td style="width:15%">Total</td>
+          </tr>
+          <% @order_items.each do |order_item| %>
+            <%= render 'carts/cart_item', product: order_item.product, order_item: order_item, show_total: true %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!--cartContent-->
+
+      <div class="cartFooter w100">
+        <div class="box-footer">
+          <div class="pull-left"><a href="/" class="btn btn-default"> <i class="fa fa-arrow-left"></i> &nbsp; Continue shopping </a></div>
+          <div class="pull-right">
+            <%#= f.submit "Update Quantity", class: "btn btn-default" %>
+            <button type="submit" class="btn btn-default"><i class="fa fa-undo"></i> &nbsp; Update Cart </button>
+          </div>
+        </div>
+      </div>
+      <!--/ cartFooter -->
+      <% #end %>
+    </div>
+  </div>
+  <!--/row end-->
+
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
+  <div class="contentBox">
+    <div class="w100 costDetails">
+      <div class="table-block" id="order-detail-content">
+        <a class="btn btn-primary btn-lg btn-block " title="checkout" href="/checkout" style="margin-bottom:20px"> Proceed to Checkout &nbsp; <i class="fa fa-arrow-right"></i> </a>
+
+        <div class="w100 cartMiniTable">
+          <table id="cart-summary" class="std table">
+            <tbody>
+            <tr>
+              <td>Total products</td>
+              <td class="price"><%= render 'layouts/cart_subtotal' %></td>
+            </tr>
+            <tr style="">
+              <td>Shipping</td>
+              <td class="price">
+                <% if current_order.subtotal > 100 %>
+                  <span class="success">Free shipping!</span>
+                <% else
+                  render :text => number_to_currency(SHIPPING)
+                end %>
+
+              </td>
+            </tr>
+            <tr class="cart-total-price ">
+              <td>Total (tax excl.)</td>
+              <td class="price">$216.51</td>
+            </tr>
+            <tr>
+              <td>Total tax</td>
+              <td class="price" id="total-tax">$0.00</td>
+            </tr>
+            <tr>
+              <td> Total</td>
+              <td class=" site-color" id="total-price">$216.51</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div class="input-append couponForm">
+                  <input class="col-lg-8" id="appendedInputButton" type="text" placeholder="Coupon code">
+                  <button class="col-lg-4 btn btn-success" type="button">Apply!</button>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End popular -->
+
+</div>
+<!--/rightSidebar-->
+
+<% end %>

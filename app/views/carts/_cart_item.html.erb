@@ -1,0 +1,27 @@
+<%= form_for order_item, remote: true do |f| %>
+<tr class="CartProduct">
+  <td class="CartProductThumb">
+    <div><a href="/productdetail"><%= image_tag("product/2.jpg") %></a></div>
+  </td>
+  <td>
+    <div class="CartDescription">
+      <h4><a href="/productdetail"><%= product.name %></a></h4>
+      <span class="size">{Size}</span>
+      <div class="price"><span><%= number_to_currency order_item.unit_price %></span></div>
+    </div>
+  </td>
+  <!--<td class="delete"><a title="Delete"> <i class="glyphicon glyphicon-trash fa-2x"></i></a></td>-->
+  <td class="delete">
+    <%= link_to order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true }  do %>
+      <%= content_tag(:i, "", :class => "glyphicon glyphicon-trash fa-2x") %>
+    <% end %>
+  </td>
+  <td>
+    <!--<input class="quanitySniper" type="text" value="2" name="quanitySniper">-->
+    <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
+    <%= f.hidden_field :product_id, value: product.id %>
+  </td>
+  <td>$0.00</td>
+  <td class="price"><%= number_to_currency order_item.total_price %></td>
+</tr>
+<% end %>

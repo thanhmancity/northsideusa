@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'productmodal' => 'productmodal#index'
   get 'productdetail' => 'productdetail#index'
 
+  resources :products, only: [:index]
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
+
   get 'cart' => 'cart#index'
 
   get 'checkout' => 'checkout#shipping'
