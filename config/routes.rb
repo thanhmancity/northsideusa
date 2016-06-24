@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'about/article'
 
   get 'productlist' => 'productlist#index'
+  get 'productlist/mens'
+  get 'productlist/kids'
+  get 'productlist/collection'
   get 'productmodal' => 'productmodal#index'
   get 'productdetail' => 'productdetail#index'
 
