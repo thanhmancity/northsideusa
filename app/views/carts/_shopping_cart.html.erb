@@ -70,17 +70,18 @@
             <tr style="">
               <td>Shipping</td>
               <td class="price">
-                <% if current_order.subtotal > 100 %>
-                  <span class="success">Free shipping!</span>
-                <% else
-                  render :text => number_to_currency(SHIPPING)
-                end %>
-
+                <%= number_to_currency(current_order.shipping) %>
+                <% #if current_order.subtotal > 100 %>
+                  <!--<span class="success">Free shipping!</span>-->
+                <% #else
+                  #render :text => number_to_currency(SHIPPING)
+                #end
+                %>
               </td>
             </tr>
             <tr class="cart-total-price ">
               <td>Total (tax excl.)</td>
-              <td class="price">$216.51</td>
+              <td class="price"><%= number_to_currency(current_order.pre_tax) %></td>
             </tr>
             <tr>
               <td>Total tax</td>
@@ -88,7 +89,7 @@
             </tr>
             <tr>
               <td> Total</td>
-              <td class=" site-color" id="total-price">$216.51</td>
+              <td class=" site-color" id="total-price"><%= number_to_currency(current_order.total) %></td>
             </tr>
             <tr>
               <td colspan="2">

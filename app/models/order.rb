@@ -11,6 +11,22 @@ class Order < ActiveRecord::Base
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end
 
+  def shipping
+    subtotal > 99.99 ? 0 : 5
+  end
+
+  def pre_tax
+    subtotal + shipping
+  end
+
+  def tax
+    0
+  end
+
+  def total
+    pre_tax + tax
+  end
+
   private
   def set_order_status
     self.order_status_id = 1
