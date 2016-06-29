@@ -43,11 +43,11 @@ a:focus, a.link {
 }
 
 .navbar-top {
-    background: #283949;
+    background: #EB7203;
 }
 
 .navbar-tshop {
-    background: #3a3a3a;
+    background: #FFFFFF;
 }
 
 .site-color {
@@ -55,7 +55,7 @@ a:focus, a.link {
 }
 
 .navbar-nav > li > a {
-    color: #fff;
+    color: #EB7203;
 }
 
 .nav > li.active, .nav > li > a:hover, .nav > li > a:focus, .nav > li:hover > a {
@@ -140,7 +140,7 @@ a:focus, a.link {
 }
 
 #pager a.cycle-pager-active {
-    background: rgba(52, 73, 94, 0.5);
+    background: rgba(52, 73, 94, 0.65);
 }
 
 /* tree menu */
