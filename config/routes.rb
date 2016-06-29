@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   get 'productmodal' => 'productmodal#index'
   get 'productdetail' => 'productdetail#index'
 
-  resources :products, only: [:index, :show]
+  #resources :products, only: [:index, :show, :men]
+  get 'products' => 'products#index'
+  get 'products/men' => 'products#men'
+  get 'products/women' => 'products#women'
+  get 'products/kids' => 'products#kids'
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
 

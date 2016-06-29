@@ -4,10 +4,12 @@
     <%= f.hidden_field :product_id, value: product.id %>
     <%= f.hidden_field :quantity, value: 1 %>
     <div class="image">
+      <!--
       <div class="quickview">
         <a data-toggle="modal" class="btn btn-xs btn-quickview" href="productmodal" data-target="#productSetailsModalAjax">Quick View </a>
       </div>
-      <a href="/productdetail"><%= image_tag("product/2.jpg", :class => "img-responsive") %></a>
+      -->
+      <a href="/productdetail"><%= image_tag("product/" + product.id.to_s + "/" + product.name.downcase.gsub(' ', '-') + "-300.jpg", :class => "img-responsive") %></a>
 
       <!--<div class="promotion"><span class="new-product"> NEW</span> <span class="discount">15% OFF</span></div>-->
     </div>
@@ -15,7 +17,7 @@
       <h4><a href="/productdetail"><%= product.name %></a></h4>
 
       <div class="grid-description">
-        <p>{ Short Description }</p>
+        <p><%= product.short_description %></p>
       </div>
       <div class="list-description">
         <p>{ Long Description }</p>
