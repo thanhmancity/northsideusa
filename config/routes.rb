@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'productlist/collection'
   get 'productmodal' => 'productmodal#index'
   get 'productdetail' => 'productdetail#index'
+  get 'productdetail/:id' => 'productdetail#show'
 
   #resources :products, only: [:index, :show, :men]
   get 'products' => 'products#index'
