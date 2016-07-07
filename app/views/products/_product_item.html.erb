@@ -1,8 +1,5 @@
 <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6">
   <div class="product">
-    <%= form_for order_item, remote: true do |f| %>
-    <%= f.hidden_field :product_id, value: product.id %>
-    <%= f.hidden_field :quantity, value: 1 %>
     <div class="image">
       <!--
       <div class="quickview">
@@ -14,7 +11,7 @@
       <!--<div class="promotion"><span class="new-product"> NEW</span> <span class="discount">15% OFF</span></div>-->
     </div>
     <div class="description">
-      <h4><a href="/productdetail"><%= product.name %></a></h4>
+      <h4><a href="/productdetail/<%= product.id %>"><%= product.name %></a></h4>
 
       <div class="grid-description">
         <p><%= product.short_description %></p>
@@ -22,14 +19,12 @@
       <div class="list-description">
         <p>{ Long Description }</p>
       </div>
-      <span class="size">{ Sizes }</span>
+      <!-- <span class="size">{ sizes }</span> -->
     </div>
     <div class="price"><span><%= number_to_currency product.price %></span></div>
     <div class="action-control">
-      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
       <!--<a href="/cart" class="btn btn-primary"> <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a>-->
     </div>
-    <% end %>
   </div>
 </div>
 <!--/.item-->
