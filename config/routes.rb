@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   #resources :products, only: [:index, :show, :men]
   get 'products' => 'products#index'
+  get 'men' => 'products#men'
+  get 'women' => 'products#women'
+  get 'kids' => 'products#kids'
   get 'products/men' => 'products#men'
   get 'products/women' => 'products#women'
   get 'products/kids' => 'products#kids'
