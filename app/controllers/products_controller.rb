@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.joins(:product_colors).order(:name).where(enabled: 1).where('product_colors.enabled = 1').select("products.*, product_colors.color")
+    @products = Product.joins(:product_colors).order(:name).where(enabled: 1).where('product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
     @order_item = current_order.order_items.new
   end
 

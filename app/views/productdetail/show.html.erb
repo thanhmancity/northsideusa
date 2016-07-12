@@ -17,11 +17,11 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <!-- product Image and Zoom -->
       <div class="main-image sp-wrap col-lg-12 no-padding style2 style2look2">
-        <a href="<%= image_url("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700.jpg") %>"><%= image_tag("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-front.jpg") %>"><%= image_tag("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-front.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-back.jpg") %>"><%= image_tag("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-back.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-left.jpg") %>"><%= image_tag("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-left.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-bottom.jpg") %>"><%= image_tag("product/" + @product.id.to_s + "/" + @product.name.downcase.gsub(' ', '-') + "-700-bottom.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700.jpg") %>"><%= image_tag("product/" + @product_color  .id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-700.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-front.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-700-front.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-back.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-700-back.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-left.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-700-left.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-bottom.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-700-bottom.jpg", :class => "img-responsive") %></a>
       </div>
     </div>
     <!--/ left column end -->
@@ -30,9 +30,9 @@
     <!-- right column -->
     <div class="col-lg-6 col-md-6 col-sm-5">
       <%= form_for @order_item, remote: true do |f| %>
-      <%= f.hidden_field :product_id, value: @product.id %>
+      <%= f.hidden_field :product_id, value: @product_color.id %>
       <%= f.hidden_field :quantity, value: 1 %>
-      <h1 class="product-title"> <%= @product.name %></h2>
+      <h1 class="product-title"> <%= @product.first.name %></h2>
 
       <!--<h3 class="product-code">Product Code : DEN1098</h3>-->
 
@@ -40,12 +40,12 @@
         <p><span><i class="fa fa-star"></i></span> <span><i class="fa fa-star"></i></span> <span><i class="fa fa-star"></i></span> <span><i class="fa fa-star"></i></span> <span><i class="fa fa-star-o"></i></span> <span class="ratingInfo"> <span> / </span> <a data-toggle="modal" data-target="#modal-review"> Write a review</a> </span></p>
       </div>-->
       <div class="product-price">
-        <span class="price-sales"> <%= number_to_currency(@product.price) %></span>
+        <span class="price-sales"> <%= number_to_currency(@product.first.price) %></span>
         <!--<span class="price-standard">$95</span>-->
       </div>
 
       <div class="details-description">
-          <p><%= @product.short_description %></p>
+          <p><%= @product.first.short_description %></p>
       </div>
 
       <!--<div class="color-details">
@@ -123,7 +123,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div class="tab-pane active" id="details">
-            <%= @product.long_description %>
+            <%= @product.first.long_description %>
           </div>
           <div class="tab-pane" id="size">
             <table>
