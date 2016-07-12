@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.joins("INNER JOIN product_colors ON products.id = product_colors.product_id").order(:name).where(enabled: 1)
+    @products = Product.joins(:product_colors).order(:name).where(enabled: 1).select("products.*, product_colors.color")
     @order_item = current_order.order_items.new
   end
 
@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def men
-    @products = Product.joins(:product_colors).order(:name).where(gender: 'm', age_group: 'a', enabled: 1)
+    @products = Product.joins(:product_colors).order(:name).where(gender: 'm', age_group: 'a', enabled: 1).select("products.*, product_colors.color")
     @order_item = current_order.order_items.new
   end
 
