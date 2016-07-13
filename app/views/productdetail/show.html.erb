@@ -33,7 +33,7 @@
       <%= form_for @order_item, remote: true do |f| %>
       <%= f.hidden_field :product_id, value: @product.first.id %>
       <%= f.hidden_field :product_color_id, value: @product_color.id %>
-      <%= f.hidden_field :quantity, value: 1 %>
+      <%#= f.hidden_field :quantity, value: 1 %>
       <h1 class="product-title"> <%= @product.first.name %></h2>
 
       <!--<h3 class="product-code">Product Code : DEN1098</h3>-->
@@ -64,17 +64,7 @@
         <div class="row">
           <div class="col-lg-6 col-sm-6 col-xs-6">
             <div class="filterBox">
-              <select class="form-control">
-                <option value="1" selected>Quantity</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </select>
+              <%= f.select(:quantity, options_for_select([['Quantity', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), {}, {class: 'form-control'}) %>
             </div>
           </div>
           <div class="col-lg-6 col-sm-6 col-xs-6">
