@@ -30,7 +30,7 @@
             <td style="width:15%">Total</td>
           </tr>
           <% @order_items.each do |order_item| %>
-            <%= render 'carts/cart_item', product: order_item.product, order_item: order_item, show_total: true %>
+            <%= render 'carts/cart_item', product: order_item.product, product_color: order_item.product_color, order_item: order_item, show_total: true %>
           <% end %>
           </tbody>
         </table>

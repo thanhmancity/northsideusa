@@ -1,6 +1,7 @@
 class OrderItem < ActiveRecord::Base
   # associations
   belongs_to :product
+  belongs_to :product_color
   belongs_to :order
 
   # validation

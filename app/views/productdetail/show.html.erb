@@ -1,4 +1,5 @@
 <div class="container main-container headerOffset">
+  <h1><%= @product.first.id %></h1>
   <!--
   <div class="row">
     <div class="breadcrumbDiv col-lg-12">
@@ -17,11 +18,11 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <!-- product Image and Zoom -->
       <div class="main-image sp-wrap col-lg-12 no-padding style2 style2look2">
-        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700.jpg") %>"><%= image_tag("product/" + @product_color  .id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-front.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-front.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-back.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-back.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-left.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-left.jpg", :class => "img-responsive") %></a>
-        <a href="<%= image_url("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-bottom.jpg") %>"><%= image_tag("product/" + @product_color.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-bottom.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700.jpg") %>"><%= image_tag("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-front.jpg") %>"><%= image_tag("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-front.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-back.jpg") %>"><%= image_tag("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-back.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-left.jpg") %>"><%= image_tag("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-left.jpg", :class => "img-responsive") %></a>
+        <a href="<%= image_url("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-bottom.jpg") %>"><%= image_tag("product/" + @product.first.id.to_s + "/" + @product.first.name.downcase.gsub(' ', '-') + "-" + @product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-700-bottom.jpg", :class => "img-responsive") %></a>
       </div>
     </div>
     <!--/ left column end -->
@@ -30,7 +31,8 @@
     <!-- right column -->
     <div class="col-lg-6 col-md-6 col-sm-5">
       <%= form_for @order_item, remote: true do |f| %>
-      <%= f.hidden_field :product_id, value: @product_color.id %>
+      <%= f.hidden_field :product_id, value: @product.first.id %>
+      <%= f.hidden_field :product_color_id, value: @product_color.id %>
       <%= f.hidden_field :quantity, value: 1 %>
       <h1 class="product-title"> <%= @product.first.name %></h2>
 
