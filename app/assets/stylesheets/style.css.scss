@@ -55,6 +55,7 @@
 /* btn styled from btn.less  */
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Dosis:600,300);
 
 /* google webfont */
 
@@ -87,7 +88,7 @@ body {
     margin: 0;
     padding: 0;
     color: #454545;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-size: 14px;
     line-height: 21px;
     position: relative;
@@ -99,7 +100,7 @@ body {
 /* =============================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-weight: normal;
     margin: 0;
     padding-bottom: 15px;
@@ -147,7 +148,7 @@ h3 code {
 
 .block-title-1 {
     display: block;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-size: 14px;
     font-weight: normal;
     letter-spacing: 2px;
@@ -455,7 +456,7 @@ ul.list-border li:hover {
 
 .modal-title-site {
     color: #FFFFFF;
-    font-family: Oswald;
+    font-family: 'Dosis', sans-serif;
     font-size: 38px;
     font-weight: lighter;
     padding: 13px 0;
@@ -975,7 +976,7 @@ legend {
     -webkit-box-sizing: border-box;
     border: 0 none;
     color: #FFFFFF;
-    font-family: sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-size: 20px;
     line-height: 1.2;
     margin: 0;
@@ -1020,7 +1021,7 @@ legend {
 
 .promo-1 {
     color: #FFFFFF;
-    font-family: Oswald, Helvetica Neue;
+    font-family: 'Dosis', sans-serif;
     margin-bottom: 15px;
     font-weight: lighter;
     padding: 5px 0;
@@ -1342,7 +1343,7 @@ legend {
 
 .box-4in .price, .box-text-table .dealprice {
     display: block;
-    font-family: oswald, Helvetica Neue, Arial, Helvetica, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Arial, Helvetica, sans-serif;
     font-size: 26px;
     font-weight: lighter;
     margin-bottom: 15px;
@@ -1383,13 +1384,13 @@ legend {
 .box-text h1, .box-text-cell-inner h1 {
     font-size: 36px;
     letter-spacing: 3px;
-    font-family: Oswald, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: normal;
     text-transform: uppercase;
 }
 
 .box-text p, .box-text-cell-inner p {
-    font-family: Oswald;
+    font-family: 'Dosis', sans-serif;
     font-weight: lighter;
 }
 
@@ -1566,7 +1567,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 .box-price-tag .price {
     background: #fff;
     color: #454545;
-    font-family: oswald;
+    font-family: 'Dosis', sans-serif;
     font-size: 28px;
     font-weight: normal;
     letter-spacing: 2px;
@@ -2033,7 +2034,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     display: block;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     float: left;
-    font-family: Oswald, Helvetica Neue;
+    font-family: 'Dosis', sans-serif;
     font-size: 15px;
     font-weight: normal;
     list-style: none outside none;
@@ -2095,7 +2096,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 .sectionCategoryIntro h1 {
-    font-family: Oswald;
+    font-family: 'Dosis', sans-serif;
     font-size: 22px;
     font-weight: lighter;
     letter-spacing: 2px;
@@ -2175,7 +2176,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 #productShowCase .product-title {
-    font-family: oswald;
+    font-family: 'Dosis', sans-serif;
     font-size: 24px;
     font-weight: normal;
     letter-spacing: 0.25px;
@@ -2214,7 +2215,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 
 .boxes-title-1 {
     background: #ebebeb;
-    font-family: Oswald;
+    font-family: 'Dosis', sans-serif;
     font-weight: normal;
     letter-spacing: 1px;
     margin-bottom: 30px;
@@ -2345,7 +2346,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     color: white;
     display: block;
     font-size: 20px;
-    font-family: Oswald;
+    font-family: 'Dosis', sans-serif;
     font-weight: normal;
     letter-spacing: 3px;
     padding: 0 10px;
@@ -2776,7 +2777,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     color: #FFFFFF;
     display: inline-block;
     float: left;
-    font-family: Oswald, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: lighter;
     height: 100%;
@@ -2789,7 +2790,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     color: #fff;
     display: inline-block;
     float: left;
-    font-family: Oswald, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: lighter;
     height: 100%;
@@ -2808,7 +2809,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 .item h4 a {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-weight: 700;
     color: #3a3a3a;
     text-decoration: none;
@@ -3683,7 +3684,7 @@ h5.parallaxSubtitle {
 }
 
 .product-code {
-    font-family: oswald, Helvetica Neue, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Arial, sans-serif;
     font-size: 14px;
     font-weight: lighter;
     letter-spacing: 1px;
@@ -3737,7 +3738,7 @@ h5.parallaxSubtitle {
 }
 
 .nav-tabs li a {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-size: 14px;
     font-weight: 200;
     letter-spacing: 2px;
@@ -3839,7 +3840,7 @@ h5.parallaxSubtitle {
     color: #FFFFFF;
     display: block;
     float: left;
-    font-family: Oswald, Helvetica Neue, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Arial, sans-serif;
     font-size: 18px;
     font-weight: lighter;
     line-height: 1em;
@@ -3875,7 +3876,7 @@ button.first {
 .incaps {
     display: block;
     float: left;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-size: 14px;
     font-weight: normal;
     letter-spacing: 2px;
@@ -4382,7 +4383,7 @@ div.quickview {
 
 .btn-quickview {
     border-radius: 2px;
-    font-family: "Oswald", Helvetica Neue, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Arial, sans-serif;
     letter-spacing: 2px;
     color: #454545 !important;
     text-transform: uppercase;
@@ -4607,7 +4608,7 @@ div.quickview {
 
 #modalAds h3 {
     color: #444;
-    font-family: Oswald, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 26px;
     font-weight: normal;
     letter-spacing: 1px;
@@ -4617,7 +4618,7 @@ div.quickview {
 
 .discountLg {
     color: #000;
-    font-family: Oswald, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 46px;
     font-weight: bold;
     letter-spacing: 3px;
@@ -4699,7 +4700,7 @@ div.quickview {
     color: #000;
     display: inline-block;
     clear: both;
-    font-family: Oswald, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Dosis', Helvetica Neue, Helvetica, Arial, sans-serif;
     left: 2px;
     margin-top: 20px;
     text-decoration: underline;
