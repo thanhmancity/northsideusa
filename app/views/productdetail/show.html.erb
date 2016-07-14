@@ -68,7 +68,8 @@
           </div>
           <div class="col-lg-6 col-sm-6 col-xs-6">
             <div class="filterBox">
-              <%= f.collection_select(:size, @sizes, :size, :size, prompt: 'Sizes') %>
+              <%= f.select(:size_id, @sizes.all.collect {|s| [s.size, s.id]}, {include_blank: 'Sizes'}) %>
+              <%#= f.collection_select(:size, @sizes, :size, :size, prompt: 'Sizes') %>
               <%#= f.select :size, options_for_select(@sizes) %>
               <!-- <select class="form-control">
                 <option value="strawberries" selected>Size</option>
