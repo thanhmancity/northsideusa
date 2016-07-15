@@ -2,4 +2,5 @@
 alert("not valid.")
 <% else %>
   $(".cart-subtotal").html("<%= escape_javascript(render 'layouts/cart_subtotal') %>")
+  window.location.replace("/cart");
 <% end %>
