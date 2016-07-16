@@ -1,0 +1,24 @@
+<div class="navbar-cart  collapse">
+  <div class="cartMenu  col-lg-4 col-xs-12 col-md-4 ">
+    <div class="w100 miniCartTable scroll-pane">
+      <table>
+        <tbody>
+        <% current_order.order_items.each do |order_item| %>
+          <%= render 'layouts/cart_order_summary_item_sm', product: order_item.product, product_color: order_item.product_color, size: order_item.size, order_item: order_item, show_total: true %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <!--/.miniCartTable-->
+
+    <div class="miniCartFooter  miniCartFooterInMobile text-right">
+      <h3 class="text-right subtotal cart-subtotal"> Subtotal: <%= render 'layouts/cart_subtotal' %> </h3>
+      <a class="btn btn-sm btn-danger" href="/cart"> <i class="fa fa-shopping-cart"> </i> VIEW CART
+      </a> <a href="/checkout" class="btn btn-sm btn-primary"> CHECKOUT </a>
+    </div>
+    <!--/.miniCartFooter-->
+
+  </div>
+  <!--/.cartMenu-->
+</div>
+<!--/.navbar-cart-->

@@ -1,7 +1,7 @@
 <%= form_for order_item, remote: true do |f| %>
 <tr class="CartProduct">
   <td class="CartProductThumb">
-    <div><a href="/productdetail/<%= product.id.to_s %>"><%= image_tag("product/" + product.id.to_s + "/" + product.name.downcase.gsub(' ', '-') + "-" + product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-300.jpg") %></a></div>
+    <div><a href="/productdetail/<%= product_color.id.to_s %>"><%= image_tag("product/" + product.id.to_s + "/" + product.name.downcase.gsub(' ', '-') + "-" + product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-300.jpg") %></a></div>
   </td>
   <td>
     <div class="CartDescription">
