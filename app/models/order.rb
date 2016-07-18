@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   # associations
   belongs_to :order_status
   has_many :order_items
+  has_one :order_shippings
+  has_one :order_billings
 
   # callbacks
   before_create :set_order_status

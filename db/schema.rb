@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713170135) do
+ActiveRecord::Schema.define(version: 20160718224446) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 50
@@ -95,12 +95,26 @@ ActiveRecord::Schema.define(version: 20160713170135) do
   add_index "nsusa_terms", ["name"], name: "name", length: {"name"=>191}, using: :btree
   add_index "nsusa_terms", ["slug"], name: "slug", length: {"slug"=>191}, using: :btree
 
+  create_table "order_billings", force: :cascade do |t|
+    t.integer  "order_id",        limit: 4
+    t.string   "bill_first_name", limit: 255
+    t.string   "bill_last_name",  limit: 255
+    t.string   "bill_address1",   limit: 255
+    t.string   "bill_address2",   limit: 255
+    t.string   "bill_city",       limit: 255
+    t.string   "bill_state",      limit: 255
+    t.string   "bill_zip",        limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
+    t.integer  "order_id",         limit: 4
     t.integer  "product_id",       limit: 4
     t.integer  "product_color_id", limit: 4
-    t.integer  "order_id",         limit: 4
     t.decimal  "unit_price",                 precision: 9, scale: 2
     t.integer  "quantity",         limit: 4
+    t.integer  "size_id",          limit: 4
     t.decimal  "total_price",                precision: 9, scale: 2
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
@@ -109,6 +123,22 @@ ActiveRecord::Schema.define(version: 20160713170135) do
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
   add_index "order_items", ["product_color_id"], name: "fk_rails_61cfedf519", using: :btree
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
+  add_index "order_items", ["size_id"], name: "fk_prderitems_sizes_idx", using: :btree
+
+  create_table "order_shippings", force: :cascade do |t|
+    t.integer  "order_id",        limit: 4
+    t.string   "ship_first_name", limit: 255
+    t.string   "ship_last_name",  limit: 255
+    t.string   "email_address",   limit: 255
+    t.string   "phone",           limit: 255
+    t.string   "ship_address1",   limit: 255
+    t.string   "ship_address2",   limit: 255
+    t.string   "ship_city",       limit: 255
+    t.string   "ship_state",      limit: 255
+    t.string   "ship_zip",        limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "order_statuses", force: :cascade do |t|
     t.string   "name",       limit: 100
@@ -185,6 +215,7 @@ ActiveRecord::Schema.define(version: 20160713170135) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "product_colors"
   add_foreign_key "order_items", "products"
+  add_foreign_key "order_items", "sizes", name: "fk_orderitems_sizes"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "product_colors", "products"
   add_foreign_key "sizes", "product_colors"
