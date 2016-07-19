@@ -177,6 +177,11 @@ ActiveRecord::Schema.define(version: 20160718224446) do
     t.integer "category_id", limit: 4
   end
 
+  create_table "product_category", primary_key: "product_category_id", force: :cascade do |t|
+    t.integer "product_id",  limit: 4
+    t.integer "category_id", limit: 4
+  end
+
   create_table "product_colors", force: :cascade do |t|
     t.integer "product_id",      limit: 4
     t.integer "color_family_id", limit: 4
