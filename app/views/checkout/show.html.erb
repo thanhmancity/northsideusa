@@ -1,0 +1,400 @@
+<div class="container main-container headerOffset">
+  <div class="row">
+    <div class="breadcrumbDiv col-lg-12">
+      <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/cart">Cart</a></li>
+        <li class="active"> Checkout</li>
+        <li>Order ID: <%= @order.id %></li>
+      </ul>
+    </div>
+  </div>
+  <!--/.row-->
+  <%= form_for @order, remote: true do |f| %>
+  <%#= form_tag("/checkout", method: "post") do %>
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6 col-xxs-12 text-center-xs">
+      <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-shopping-cart"></i> Checkout</span></h1>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar col-xs-6 col-xxs-12 text-center-xs">
+      <%= submit_tag nil, class: "btn btn-primary btn-small" %>
+    </div>
+  </div>
+  <!--/.row-->
+
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-12">
+      <div class="row userInfo">
+        <div class="col-xs-12 col-sm-12">
+          <div class="w100 clearfix">
+            <div class="row userInfo">
+              <div class="col-lg-12">
+                <h2 class="block-title-2"> Shipping Information </h2>
+              </div>
+
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group required">
+                  <label for="ship_first_name">First Name <sup>*</sup> </label>
+                  <%= text_field_tag 'ship_first_name', nil, class: 'form-control', placeholder: 'First Name', required: true %>
+                </div>
+                <div class="form-group required">
+                  <label for="ship_last_name">Last Name <sup>*</sup> </label>
+                  <%= text_field_tag 'ship_last_name', nil, class: 'form-control', placeholder: 'Last Name', required: true %>
+                </div>
+                <div class="form-group required">
+                  <label for="email_address">Email <sup>*</sup></label>
+                  <%= text_field_tag 'email_address', nil, class: 'form-control', placeholder: 'Email Address', required: true %>
+                </div>
+                <div class="form-group required">
+                  <label for="phone">Phone <sup>*</sup></label>
+                  <%= text_field_tag 'phone', nil, class: 'form-control', placeholder: 'Phone Number', required: true %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group required">
+                  <label for="ship_address1">Address <sup>*</sup> </label>
+                  <%= text_field_tag 'ship_address1', nil, class: 'form-control', placeholder: 'Address', required: true %>
+                </div>
+                <div class="form-group">
+                  <label for="ship_address2">Address (Line 2) </label>
+                  <%= text_field_tag 'ship_address2', nil, class: 'form-control', placeholder: 'Address' %>
+                </div>
+                <div class="form-group required">
+                  <label for="ship_city">City <sup>*</sup> </label>
+                  <%= text_field_tag 'ship_city', nil, class: 'form-control', placeholder: 'City', required: true %>
+                </div>
+                <div class="form-group required">
+                  <label for="ship_state">State <sup>*</sup> </label>
+                  <%= select_tag 'ship_state', options_for_select([
+                    ['Alabama', 'AL'],
+                    ['Alaska', 'AK'],
+                    ['Arizona', 'AZ'],
+                    ['Arkansas', 'AR'],
+                    ['California', 'CA'],
+                    ['Colorado', 'CO'],
+                    ['Connecticut', 'CT'],
+                    ['Delaware', 'DE'],
+                    ['District of Columbia', 'DC'],
+                    ['Florida', 'FL'],
+                    ['Georgia', 'GA'],
+                    ['Hawaii', 'HI'],
+                    ['Idaho', 'ID'],
+                    ['Illinois', 'IL'],
+                    ['Indiana', 'IN'],
+                    ['Iowa', 'IA'],
+                    ['Kansas', 'KS'],
+                    ['Kentucky', 'KY'],
+                    ['Louisiana', 'LA'],
+                    ['Maine', 'ME'],
+                    ['Maryland', 'MD'],
+                    ['Massachusetts', 'MA'],
+                    ['Michigan', 'MI'],
+                    ['Minnesota', 'MN'],
+                    ['Mississippi', 'MS'],
+                    ['Missouri', 'MO'],
+                    ['Montana', 'MT'],
+                    ['Nebraska', 'NE'],
+                    ['Nevada', 'NV'],
+                    ['New Hampshire', 'NH'],
+                    ['New Jersey', 'NJ'],
+                    ['New Mexico', 'NM'],
+                    ['New York', 'NY'],
+                    ['North Carolina', 'NC'],
+                    ['North Dakota', 'ND'],
+                    ['Ohio', 'OH'],
+                    ['Oklahoma', 'OK'],
+                    ['Oregon', 'OR'],
+                    ['Pennsylvania', 'PA'],
+                    ['Puerto Rico', 'PR'],
+                    ['Rhode Island', 'RI'],
+                    ['South Carolina', 'SC'],
+                    ['South Dakota', 'SD'],
+                    ['Tennessee', 'TN'],
+                    ['Texas', 'TX'],
+                    ['Utah', 'UT'],
+                    ['Vermont', 'VT'],
+                    ['Virginia', 'VA'],
+                    ['Washington', 'WA'],
+                    ['West Virginia', 'WV'],
+                    ['Wisconsin', 'WI'],
+                    ['Wyoming', 'WY']
+                  ], :required => true) %>
+                </div>
+                <div class="form-group required">
+                  <label for="ship_zip">Zip / Postal Code <sup>*</sup> </label>
+                  <%= text_field_tag 'ship_zip', nil, class: 'form-control', placeholder: 'Zip / Postal Code', required: true %>
+                </div>
+              </div>
+            </div>
+            <!--/row end-->
+
+            <div class="row userInfo">
+              <div class="col-lg-12">
+                <h2 class="block-title-2"> Billing Information </h2>
+              </div>
+              <div class="col-xs-12 col-sm-12">
+                <label class="checkbox-inline" for="checkboxes-0">
+                <input name="checkboxes" id="checkboxes-0" value="1" type="checkbox">
+                My delivery and billing addresses are the same. </label>
+                <hr>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group required">
+                  <label for="bill_first_name">First Name <sup>*</sup> </label>
+                  <%= text_field_tag 'bill_first_name', nil, class: 'form-control', placeholder: 'First Name', required: true %>
+                </div>
+                <div class="form-group required">
+                  <label for="bill_last_name">Last Name <sup>*</sup> </label>
+                  <%= text_field_tag 'bill_last_name', nil, class: 'form-control', placeholder: 'Last Name', required: true %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group required">
+                  <label for="bill_address1">Address <sup>*</sup> </label>
+                  <%= text_field_tag 'bill_address1', nil, class: 'form-control', placeholder: 'Address', required: true %>
+                </div>
+                <div class="form-group">
+                  <label for="bill_address2">Address (Line 2) </label>
+                  <%= text_field_tag 'bill_address2', nil, class: 'form-control', placeholder: 'Address' %>
+                </div>
+                <div class="form-group required">
+                  <label for="bill_city">City <sup>*</sup> </label>
+                  <%= text_field_tag 'bill_city', nil, class: 'form-control', placeholder: 'City', required: true %>
+                </div>
+                <div class="form-group required">
+                  <label for="bill_state">State <sup>*</sup> </label>
+                  <%= select_tag 'bill_state', options_for_select([
+                    ['Alabama', 'AL'],
+                    ['Alaska', 'AK'],
+                    ['Arizona', 'AZ'],
+                    ['Arkansas', 'AR'],
+                    ['California', 'CA'],
+                    ['Colorado', 'CO'],
+                    ['Connecticut', 'CT'],
+                    ['Delaware', 'DE'],
+                    ['District of Columbia', 'DC'],
+                    ['Florida', 'FL'],
+                    ['Georgia', 'GA'],
+                    ['Hawaii', 'HI'],
+                    ['Idaho', 'ID'],
+                    ['Illinois', 'IL'],
+                    ['Indiana', 'IN'],
+                    ['Iowa', 'IA'],
+                    ['Kansas', 'KS'],
+                    ['Kentucky', 'KY'],
+                    ['Louisiana', 'LA'],
+                    ['Maine', 'ME'],
+                    ['Maryland', 'MD'],
+                    ['Massachusetts', 'MA'],
+                    ['Michigan', 'MI'],
+                    ['Minnesota', 'MN'],
+                    ['Mississippi', 'MS'],
+                    ['Missouri', 'MO'],
+                    ['Montana', 'MT'],
+                    ['Nebraska', 'NE'],
+                    ['Nevada', 'NV'],
+                    ['New Hampshire', 'NH'],
+                    ['New Jersey', 'NJ'],
+                    ['New Mexico', 'NM'],
+                    ['New York', 'NY'],
+                    ['North Carolina', 'NC'],
+                    ['North Dakota', 'ND'],
+                    ['Ohio', 'OH'],
+                    ['Oklahoma', 'OK'],
+                    ['Oregon', 'OR'],
+                    ['Pennsylvania', 'PA'],
+                    ['Puerto Rico', 'PR'],
+                    ['Rhode Island', 'RI'],
+                    ['South Carolina', 'SC'],
+                    ['South Dakota', 'SD'],
+                    ['Tennessee', 'TN'],
+                    ['Texas', 'TX'],
+                    ['Utah', 'UT'],
+                    ['Vermont', 'VT'],
+                    ['Virginia', 'VA'],
+                    ['Washington', 'WA'],
+                    ['West Virginia', 'WV'],
+                    ['Wisconsin', 'WI'],
+                    ['Wyoming', 'WY']
+                  ], :required => true) %>
+                </div>
+                <div class="form-group required">
+                  <label for="bill_zip">Zip / Postal Code <sup>*</sup> </label>
+                  <%= text_field_tag 'bill_zip', nil, class: 'form-control', placeholder: 'Zip / Postal Code', required: true %>
+                </div>
+              </div>
+            </div>
+            <!--/row end-->
+
+            <div class="row userInfo">
+              <div class="col-lg-12">
+                <h2 class="block-title-2"> Delivery Method </h2>
+              </div>
+              <div class="col-xs-12 col-sm-12">
+                <div class="w100 row">
+                  <div class="form-group col-lg-12 col-sm-12 col-md-12 -col-xs-12">
+                    <table style="width:100%" class="table-bordered table tablelook2">
+                      <tbody>
+                      <tr>
+                        <td> Carrier</td>
+                        <td>Method</td>
+                        <td>Information</td>
+                        <td>Price!</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio">
+                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> <i class="fa fa-truck fa-2x"></i> </label>
+                        </td>
+                        <td>By Road</td>
+                        <td>Pick up in-store</td>
+                        <td>Free!</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!--/row-->
+
+              </div>
+            </div>
+
+            <div class="row userInfo">
+              <div class="col-lg-12">
+                <h2 class="block-title-2"> Payment Method </h2>
+              </div>
+              <div class="col-xs-12 col-sm-12">
+                <div class="paymentBox">
+                  <p>All transactions are secure. To learn more, please view our privacy policy.</p>
+                  <br>
+
+                  <div class="creditCard">
+                    <div class="cartBottomInnerRight paymentCard">
+                    </div>
+                    <span>Supported</span> <span>Credit Cards</span>
+
+                    <div class="paymentInput">
+                      <label for="CardNumber">Credit Card Number *</label>
+                      <br>
+                      <input id="CardNumber" type="text" name="Number">
+                    </div>
+                    <!--paymentInput-->
+                    <div class="paymentInput">
+                      <label for="CardNumber2">Name on Credit Card *</label>
+                      <br>
+                      <input type="text" name="CardNumber2" id="CardNumber2">
+                    </div>
+                    <!--paymentInput-->
+                    <div class="paymentInput">
+                      <div class="form-group">
+                        <label>Expiration date *</label>
+                        <br>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 no-margin-left no-padding">
+                          <select class="form-control" required aria-required="true" name="expire">
+                            <option value="">Month</option>
+                            <option value="1">01 - January</option>
+                            <option value="2">02 - February</option>
+                            <option value="3">03 - March</option>
+                            <option value="4">04 - April</option>
+                            <option value="5">05 - May</option>
+                            <option value="6">06 - June</option>
+                            <option value="7">07 - July</option>
+                            <option value="8">08 - August</option>
+                            <option value="9">09 - September</option>
+                            <option value="10">10 - October</option>
+                            <option value="11">11 - November</option>
+                            <option value="12">12 - December</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                          <select class="form-control" required aria-required="true" name="year">
+                            <option value="">Year</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <!--paymentInput-->
+
+                    <div style="clear:both"></div>
+                    <div class="paymentInput clearfix">
+                      <label for="VerificationCode">Verification Code *</label>
+                      <br>
+                      <input type="text" id="VerificationCode" name="VerificationCode" style="width:90px;">
+                      <br>
+                    </div>
+                    <!--paymentInput-->
+                  </div>
+                  <!--creditCard-->
+                  <div class="pull-right">
+                    <%= f.submit %>
+                    <%#= submit_tag nil, class: "btn btn-primary btn-small" %>
+                    <!-- <a href="/checkout/review" class="btn btn-primary btn-small "> Place Order &nbsp; <i class="fa fa-arrow-circle-right"></i> </a> -->
+                  </div>
+                </div>
+                <!--/row-->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--/row end-->
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-12 rightSidebar">
+      <div class="w100 cartMiniTable">
+        <table id="cart-summary" class="std table">
+          <tbody>
+          <tr>
+            <td>Total products</td>
+            <td class="price"><%= render 'layouts/cart_subtotal' %></td>
+          </tr>
+          <tr style="">
+            <td>Shipping</td>
+            <td class="price">
+              <%= number_to_currency(current_order.shipping) %>
+              <!-- <span class="success">Free shipping!</span> -->
+            </td>
+          </tr>
+          <tr class="cart-total-price ">
+            <td>Total (tax excl.)</td>
+            <td class="price"><%= number_to_currency(current_order.pre_tax) %></td>
+          </tr>
+          <tr>
+            <td>Total tax</td>
+            <td class="price" id="total-tax">$0.00</td>
+          </tr>
+          <tr>
+            <td> Total</td>
+            <td class=" site-color" id="total-price"><%= number_to_currency(current_order.total) %></td>
+          </tr>
+          </tbody>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <!--  /cartMiniTable-->
+
+    </div>
+    <!--/rightSidebar-->
+
+  </div>
+  <!--/row-->
+  <% end %>
+  <div style="clear:both"></div>
+</div>
+<!-- /.main-container-->
+<div class="gap"></div>

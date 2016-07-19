@@ -50,7 +50,7 @@ Rails.application.routes.draw do
 
   get 'cart' => 'cart#index'
 
-  get 'checkout' => 'checkout#shipping'
+  get 'checkout' => 'checkout#show'
   get 'checkout/shipping'
   get 'checkout/billing'
   get 'checkout/delivery'
