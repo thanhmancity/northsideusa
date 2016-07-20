@@ -4,6 +4,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_order
 
+  def self.paytrace_api
+    OAuth2::Client.new(
+      nil, nil,
+      site: 'https://api.paytrace.com',
+    ).password.get_token(
+      *Rails.configuration.paytrace_api_credentials
+    )
+  end
+
+  protected
+  def paytrace_api
+    self.class.paytrace_api
+  end
+
   def current_order
     if !session[:order_id].nil?
       Order.find(session[:order_id])

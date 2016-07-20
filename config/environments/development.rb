@@ -38,4 +38,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.paytrace_api_credentials = ['northside_ecommerce', 'B!gSho3H0rn']
 end

@@ -10,14 +10,42 @@ class OrdersController < ApplicationController
     # Get current order
     @order = current_order
     # Update Shipping
-    @order_shipping = OrderShipping.create(:order_id => @order.id)
     @order_shipping = OrderShipping.find_by(order_id: @order.id)
-    @order_shipping.update_attributes(order_shipping_params)
+    if @order_shipping
+      @order_shipping = OrderShipping.where(:order_id => @order.id).update_all(order_shipping_params)
+    else
+      @order_shipping = OrderShipping.create(:order_id => @order.id)
+      @order_shipping = OrderShipping.where(:order_id => @order.id).update_all(order_shipping_params)
+    end
     # Update Billing
-    @order_billing = OrderBilling.create(:order_id => @order.id)
     @order_billing = OrderBilling.find_by(order_id: @order.id)
-    @order_billing.update_attributes(order_billing_params)
+    if @order_billing
+      @order_billing = OrderBilling.where(:order_id => @order.id).update_all(order_billing_params)
+    else
+      @order_billing = OrderBilling.create(:order_id => @order.id)
+      @order_billing = OrderBilling.where(:order_id => @order.id).update_all(order_billing_params)
+    end
     # API Call to PayTrace
+    # response = Transaction.sale(
+    # {
+    #   amount: "1.00",
+    #   card_number: "4111111111111111",
+    #   expiration_year: 17,
+    #   expiration_month: 3
+    # })
+
+    #
+    ## Response information is available on the transaction
+    #
+    # puts response.get_response() # 101. Your transaction was successfully approved.
+
+    #
+    ## All values returned are accessible through the response
+    #
+    # response.values do |key, value|
+    #     puts key      # e.g. APPCODE
+    #     puts value    # TAS671
+    # end
     # Save
     # Save Order
     # Update Order Status
