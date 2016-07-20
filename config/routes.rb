@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get 'kids/watershoes' => 'products#kids_watershoes'
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
+  resources :orders, only: [:create, :update, :destroy]
 
   get 'cart' => 'cart#index'
 
