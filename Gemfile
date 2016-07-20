@@ -35,6 +35,9 @@ gem 'activerecord-sqlserver-adapter'
 # MySQL Server hooks
 gem 'mysql2'
 
+# OAuth hooks for PayTrace API
+gem 'oauth2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

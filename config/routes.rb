@@ -71,6 +71,14 @@ Rails.application.routes.draw do
   get 'contactus' => 'contact_us#index'
 
   get 'customerservice' => 'customer_service#index'
+
+  get 'sales' => 'sales#new'
+
+  resources :sales do
+    collection do
+      get :new_encrypted
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
