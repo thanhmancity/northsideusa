@@ -7,13 +7,20 @@ class OrdersController < ApplicationController
   end
 
   def update
+    # Get current order
     @order = current_order
+    # Update Shipping
+    @order_shipping = OrderShipping.create(:order_id => @order.id)
     @order_shipping = OrderShipping.find_by(order_id: @order.id)
     @order_shipping.update_attributes(order_shipping_params)
-    @order_billiing = OrderBilling.find_by(order_id: @order.id)
-    @order_billiing.update_attributes(order_billing_params)
+    # Update Billing
+    @order_billing = OrderBilling.create(:order_id => @order.id)
+    @order_billing = OrderBilling.find_by(order_id: @order.id)
+    @order_billing.update_attributes(order_billing_params)
     # API Call to PayTrace
+    # Save
     # Save Order
+    # Update Order Status
     # Redirect to Order_thanks
   end
 
