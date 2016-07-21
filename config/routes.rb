@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'about/brandpromise'
   get 'about/news'
   get 'about/article'
+  get 'northside-introduces-new-kids-winter-boots' => 'about#article1'
+  get 'northside-unveils-on-trend-new-womens-cold-weather-lifestyle-boots' => 'about#article2'
+  get 'northside-project-sole' => 'about#article3'
+  get 'northside-expands-trail-line-to-meet-more-needs-than-ever-before' => 'about#article4'
 
   get 'productlist' => 'productlist#index'
   get 'productlist/mens'
