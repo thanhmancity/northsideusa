@@ -1,0 +1,33 @@
+<h1>Checkout</h1>
+
+<%= form_tag("/checkout/pay", method: :post) do %>
+  <div>
+    Cart Total: $<%= "%0.2f" % [@cart_total] %>
+  </div>
+  <div>
+    <label for="sale_credit_card_number">Credit Card Number:</label>
+    <input type="text" id="sale_credit_card_number" name="sale[credit_card][number]" class="pt-encrypt" /><br />
+    Card Expiration:<br/>
+    <label for="sale_credit_card_expiration_month">Month</label>
+    <input id="sale_credit_card_expiration_month" name="sale[credit_card][expiration_month]" type="text" size="2" maxlength="2"/>
+    <label for="sale_credit_card_expiration_year">Year</label>
+    <input id="sale_credit_card_expiration_year" name="sale[credit_card][expiration_year]" type="text" size="4" maxlength="4"/>
+    <label for="sale_billing_address_street_address">Billing Address</label>
+    <input id="sale_billing_address_street_address" name="sale[billing_address][street_address]" type="text" size="20" maxlength="100"/>
+    <label for="sale_billing_address_zip">Billing Zip</label>
+    <input id="sale_billing_address_zip" name="sale[billing_address][zip]" type="text" size="10" maxlength="12"/>
+    <input id="sale_invoice_id" name="sale[invoice_id]" type="hidden" value="2"/>
+  </div>
+  <input name="commit" type="submit" value="Pay" />
+<% end %>
+
+<!--
+
+NOTE:
+  The PEM public key file for your merchant account must be served from the URL referenced by
+  the "data-paytrace-keyurl" attribute below ("/e2ee-public-key.pem" in this case) and it
+  must be a URL on the same server serving this form.  For Rails, put the public key in the
+  "public/e2ee-public-key.pem" file.
+
+-->
+<script src="https://api.paytrace.com/assets/e2ee/paytrace-e2ee.js" data-paytrace-keyurl="/public_key.pem"></script>

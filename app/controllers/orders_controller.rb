@@ -26,30 +26,35 @@ class OrdersController < ApplicationController
       @order_billing = OrderBilling.where(:order_id => @order.id).update_all(order_billing_params)
     end
     # API Call to PayTrace
-    # response = Transaction.sale(
-    # {
-    #   amount: "1.00",
-    #   card_number: "4111111111111111",
-    #   expiration_year: 17,
-    #   expiration_month: 3
-    # })
+    # params contains the data posted from the "checkout" form (see the
+    # "checkout" action in this class)
 
-    #
-    ## Response information is available on the transaction
-    #
-    # puts response.get_response() # 101. Your transaction was successfully approved.
+    request = params[:sale]
 
-    #
-    ## All values returned are accessible through the response
-    #
-    # response.values do |key, value|
-    #     puts key      # e.g. APPCODE
-    #     puts value    # TAS671
-    # end
+    # This is where you would make any adjustments to the information gathered by
+    # Rails into "request", such as setting request[:amount] based on an invoice
+    # or the current cart balance.
+    request[:amount] = cart_total
+
+    @request = request.to_json # For display
+
+    response = paytrace_api.post('/v1/transactions/sale/keyed', body: request)
+    @response_status = response.status
+    @response = response.body
+
+    # In a real application, you would capture the result of paytrace_api.post
+    # in a model instance, then redirect to a page displaying the information,
+    # obtaining it for display from the model object.
     # Save
     # Save Order
     # Update Order Status
     # Redirect to Order_thanks
+  end
+
+  protected
+
+  def cart_total
+    10.00
   end
 
   def destroy
