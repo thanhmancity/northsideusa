@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     OAuth2::Client.new(
       nil, nil,
       site: 'https://api.paytrace.com',
-    ).password.get_token('northside_ecommerce', 'B!gSho3H0rn')
+    ).password.get_token('demo123', 'demo123')
   end
 
   protected
