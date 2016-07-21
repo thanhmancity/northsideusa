@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   get 'checkout/delivery'
   get 'checkout/payment'
   get 'checkout/review'
-  get 'checkout/pay'
+  post 'checkout/pay'
 
   get 'order' => 'order/index'
   get 'order/index'

@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
     OAuth2::Client.new(
       nil, nil,
       site: 'https://api.paytrace.com',
-    ).password.get_token(
-      *Rails.configuration.paytrace_api_credentials
-    )
+    ).password.get_token('northside_ecommerce', 'B!gSho3H0rn')
   end
 
   protected
