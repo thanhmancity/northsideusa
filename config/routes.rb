@@ -66,6 +66,7 @@ Rails.application.routes.draw do
   get 'order' => 'order/index'
   get 'order/index'
   get 'order/thankyou'
+  post 'order/update'
 
   get 'returns' => 'returns#index'
 

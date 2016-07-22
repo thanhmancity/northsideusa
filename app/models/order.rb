@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_one :order_shippings
   has_one :order_billings
+  has_one :order_payments
 
   # callbacks
   before_create :set_order_status

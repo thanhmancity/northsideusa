@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 1
+  order_transaction_id: MyString
+  order_approval_code: MyString
+
+two:
+  order_id: 1
+  order_transaction_id: MyString
+  order_approval_code: MyString

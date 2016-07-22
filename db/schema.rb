@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718224446) do
+ActiveRecord::Schema.define(version: 20160721231213) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 50
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 20160718224446) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "order_billings", ["order_id"], name: "orders_order_billings_idx", using: :btree
+
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id",         limit: 4
     t.integer  "product_id",       limit: 4
@@ -125,6 +127,14 @@ ActiveRecord::Schema.define(version: 20160718224446) do
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
   add_index "order_items", ["size_id"], name: "fk_prderitems_sizes_idx", using: :btree
 
+  create_table "order_payments", force: :cascade do |t|
+    t.integer  "order_id",             limit: 4
+    t.string   "order_transaction_id", limit: 255
+    t.string   "order_approval_code",  limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
   create_table "order_shippings", force: :cascade do |t|
     t.integer  "order_id",        limit: 4
     t.string   "ship_first_name", limit: 255
@@ -139,6 +149,8 @@ ActiveRecord::Schema.define(version: 20160718224446) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  add_index "order_shippings", ["order_id"], name: "orders_order_shippings_idx", using: :btree
 
   create_table "order_statuses", force: :cascade do |t|
     t.string   "name",       limit: 100
@@ -217,10 +229,12 @@ ActiveRecord::Schema.define(version: 20160718224446) do
 
   add_index "sizes", ["product_color_id"], name: "fk_rails_72a1897f16", using: :btree
 
+  add_foreign_key "order_billings", "orders", name: "orders_order_billings"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "product_colors"
   add_foreign_key "order_items", "products"
   add_foreign_key "order_items", "sizes", name: "fk_orderitems_sizes"
+  add_foreign_key "order_shippings", "orders", name: "orders_order_shippings"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "product_colors", "products"
   add_foreign_key "sizes", "product_colors"
