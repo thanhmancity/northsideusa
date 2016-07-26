@@ -11,7 +11,14 @@
   </div>
   <!--/.row-->
   <%= form_for @order do |f| %>
-  <%#= form_tag("/checkout", method: "post") do %>
+  <% if @transaction_error %>
+    <div id="error_explanation">
+      <h2>Your order could not be saved:</h2>
+      <ul>
+        <li><%= @transaction_error %></li>
+      </ul>
+    </div>
+  <% end %>
   <div class="row">
     <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6 col-xxs-12 text-center-xs">
       <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-shopping-cart"></i> Checkout</span></h1>

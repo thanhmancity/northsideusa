@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
@@ -29,9 +30,11 @@ class OrdersController < ApplicationController
     end
     
     # API Call to PayTrace
+    @transaction_error = nil
     # Build Request
     request = params[:sale]
 
+    # request[:amount] = 0.2
     request[:amount] = @order.total
     request[:invoice_id] = @order.id
     request[:billing_address] = {:street_address => params[:bill_address1], :zip => params[:ship_zip]}
@@ -39,13 +42,30 @@ class OrdersController < ApplicationController
     puts request
 
     @request = request.to_json # For display
+    
+    puts @request
 
     # Build Response
-    response = paytrace_api.post('/v1/transactions/sale/keyed', body: request)
-    @response_status = response.status
-    @response = response.body
+    begin
+      response = paytrace_api.post('/v1/transactions/authorization/keyed', body: request)
+    rescue Exception => e 
+      @transaction_failure = e.message
+      @transaction_failure[0] = ''
+      @transaction_failure = ActiveSupport::JSON.decode(@transaction_failure)
+      puts @transaction_failure
+    end
     
-    puts @response
+    
+    if response
+      puts response.status
+      @response_status = response.status
+      @response = response.body
+    
+      puts "response: >>>" + @response + "<<<"
+    else
+      @response = ActiveSupport::JSON.encode(@transaction_failure)
+      puts @response
+    end
 
     # Update Payment
     parsed_response = JSON.parse(@response)
@@ -53,25 +73,31 @@ class OrdersController < ApplicationController
     puts @transaction_id
     @approval_code = parsed_response["approval_code"]
     puts @approval_code
+    @success = parsed_response["success"]
+    puts @success
     
-    @order_payment = OrderPayment.find_by(order_id: @order.id)
-    if @order_payment
-      @order_payment = OrderPayment.where(:order_id => @order.id).update_all(order_transaction_id: @transaction_id, order_approval_code: @approval_code)
+    if @success == 'true'
+    
+      @order_payment = OrderPayment.find_by(order_id: @order.id)
+      if @order_payment
+        @order_payment = OrderPayment.where(:order_id => @order.id).update_all(order_transaction_id: @transaction_id, order_approval_code: @approval_code)
+      else
+        @order_payment = OrderPayment.create(:order_id => @order.id)
+        @order_payment = OrderPayment.where(:order_id => @order.id).update_all(order_transaction_id: @transaction_id, order_approval_code: @approval_code)
+      end
+      
+      # Update Order Status
+      @order = Order.where(:id => @order.id).update_all(order_status_id: 2)
+      
+      # render Order_thanks
+      render :action => "thankyou"
+      # redirect_to action: => 'thankyou', id: => @order.id
     else
-      @order_payment = OrderPayment.create(:order_id => @order.id)
-      @order_payment = OrderPayment.where(:order_id => @order.id).update_all(order_transaction_id: @transaction_id, order_approval_code: @approval_code)
+      # throw error to page
+      @transaction_error = parsed_response["status_message"]
     end
-    
-    # Update Order Status
-    @order = Order.where(:id => @order.id).update_all(order_status_id: 2)
-    
-    # Redirect to Order_thanks
-    redirect_to action: 'thankyou'
-    # redirect_to action: => 'thankyou', id: => @order.id
   end
-  
   def thankyou
-    @order = Order.find(params[:id])
   end
 
   def destroy
