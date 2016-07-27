@@ -24,44 +24,36 @@
                 <td colspan="2"> Items to be Shipped</td>
                 <td style="width:15%"></td>
               </tr>
-              <tr class="CartProduct">
-                <td class="CartProductThumb">
-                  <div><a href="/productdetail"><%= image_tag("product/2.jpg") %></a></div>
-                </td>
-                <td>
-                  <div class="CartDescription">
-                    <h4><a href="/productdetail">aliquam erat volutpat</a></h4>
-                    <span class="size">US 6</span>
-                    <div class="price"><span>$50</span></div>
-                  </div>
-                </td>
-                <td class="price">$50</td>
+              <% @order_items.each do |order_item| %>
+                <%= render 'orders/order_item', product: order_item.product, product_color: order_item.product_color, size: order_item.size, order_item: order_item, show_total: true %>
+              <% end %>
+              <tr>
+                <td colspan="2" style="text-align: center; padding: 10px 0;">Total products</td>
+                <td class="price" style="width:15%"><%= render 'layouts/cart_subtotal' %></td>
               </tr>
-              <tr class="CartProduct">
-                <td class="CartProductThumb">
-                  <div><a href="/productdetail"><%= image_tag("product/3.jpg") %></a></div>
+              <tr style="">
+                <td colspan="2" style="text-align: center; padding: 10px 0;">Shipping</td>
+                <td class="price">
+                  <%= number_to_currency(current_order.shipping) %>
+                  <% #if current_order.subtotal > 100 %>
+                    <!--<span class="success">Free shipping!</span>-->
+                  <% #else
+                    #render :text => number_to_currency(SHIPPING)
+                  #end
+                  %>
                 </td>
-                <td>
-                  <div class="CartDescription">
-                    <h4><a href="/productdetail">ullamcorper suscipit lobortis</a></h4>
-                    <span class="size">US 8</span>
-                    <div class="price"><span>$30</span></div>
-                  </div>
-                </td>
-                <td class="price">$30</td>
               </tr>
-              <tr class="CartProduct">
-                <td class="CartProductThumb">
-                  <div><a href="/productdetail"><%= image_tag("product/4.jpg") %></a></div>
-                </td>
-                <td>
-                  <div class="CartDescription">
-                    <h4><a href="/productdetail">demonstraverunt lectores</a></h4>
-                    <span class="size">US 7</span>
-                    <div class="price"><span>$80</span></div>
-                  </div>
-                </td>
-                <td class="price">$80</td>
+              <tr class="cart-total-price ">
+                <td colspan="2" style="text-align: center; padding: 10px 0;">Total (tax excl.)</td>
+                <td class="price"><%= number_to_currency(current_order.pre_tax) %></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: center; padding: 10px 0;">Total tax</td>
+                <td class="price" id="total-tax">$0.00</td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: center; padding: 10px 0;"> Total</td>
+                <td class=" site-color" id="total-price"><%= number_to_currency(current_order.total) %></td>
               </tr>
               </tbody>
             </table>
@@ -76,3 +68,4 @@
   <div style="clear:both"></div>
 </div>
 <!-- /.main-container -->
+<div class="gap"></div>

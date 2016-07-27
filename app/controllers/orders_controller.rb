@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
     @success = parsed_response["success"]
     puts @success
     
-    if @success == 'true'
+    if @success = 'true'
     
       @order_payment = OrderPayment.find_by(order_id: @order.id)
       if @order_payment
@@ -87,7 +87,11 @@ class OrdersController < ApplicationController
       end
       
       # Update Order Status
-      @order = Order.where(:id => @order.id).update_all(order_status_id: 2)
+      @order = Order.where(:id => @order.id).update_all(order_status_id: 2)\
+      
+      # Grab the current order
+      @order = current_order
+      @order_items = @order.order_items
       
       # render Order_thanks
       render :action => "thankyou"
@@ -96,6 +100,7 @@ class OrdersController < ApplicationController
       # throw error to page
       @transaction_error = parsed_response["status_message"]
     end
+    puts @transaction_error
   end
   def thankyou
   end
