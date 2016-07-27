@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
 
   # callbacks
   before_create :set_order_status
-  before_save :update_subtotal
+  before_save :update_values
 
   def subtotal
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
@@ -35,7 +35,10 @@ class Order < ActiveRecord::Base
     self.order_status_id = 1
   end
 
-  def update_subtotal
+  def update_values
     self[:subtotal] = subtotal
+    self[:tax] = tax
+    self[:shipping] = shipping
+    self[:total] = total
   end
 end
