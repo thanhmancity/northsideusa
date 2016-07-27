@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
   end
 
   def pre_tax
-    subtotal + shipping
+    subtotal > 0 ? subtotal + shipping : subtotal
   end
 
   def tax
