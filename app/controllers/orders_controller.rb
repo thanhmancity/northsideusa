@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
     @success = parsed_response["success"]
     puts @success
     
-    if @success = 'true'
+    if @success == "true" && @approval_code != ""
     
       @order_payment = OrderPayment.find_by(order_id: @order.id)
       if @order_payment
@@ -86,7 +86,8 @@ class OrdersController < ApplicationController
         @order_payment = OrderPayment.where(:order_id => @order.id).update_all(order_transaction_id: @transaction_id, order_approval_code: @approval_code)
       end
       
-      #curr_id = @order.id
+      # curr_id = @order.id
+      
       
       # Update Order Status
       @order = Order.where(:id => @order.id).update_all(order_status_id: 2)
@@ -103,6 +104,7 @@ class OrdersController < ApplicationController
     else
       # throw error to page
       @transaction_error = parsed_response["status_message"]
+      render :action => "update"
     end
     puts @transaction_error
   end
