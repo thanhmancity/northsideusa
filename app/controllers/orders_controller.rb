@@ -86,16 +86,20 @@ class OrdersController < ApplicationController
         @order_payment = OrderPayment.where(:order_id => @order.id).update_all(order_transaction_id: @transaction_id, order_approval_code: @approval_code)
       end
       
+      #curr_id = @order.id
+      
       # Update Order Status
-      @order = Order.where(:id => @order.id).update_all(order_status_id: 2)\
+      @order = Order.where(:id => @order.id).update_all(order_status_id: 2)
       
       # Grab the current order
       @order = current_order
       @order_items = @order.order_items
       
+      # Kill Session?
+      
       # render Order_thanks
-      render :action => "thankyou"
-      # redirect_to action: => 'thankyou', id: => @order.id
+      # render :action => "thankyou"
+      redirect_to action: "thankyou", id: @order.id
     else
       # throw error to page
       @transaction_error = parsed_response["status_message"]
@@ -103,6 +107,8 @@ class OrdersController < ApplicationController
     puts @transaction_error
   end
   def thankyou
+    @order = current_order
+    @order_items = @order.order_items
   end
 
   def destroy
