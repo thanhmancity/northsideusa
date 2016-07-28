@@ -14,7 +14,7 @@
     <div class="miniCartFooter  miniCartFooterInMobile text-right">
       <h3 class="text-right subtotal cart-subtotal"> Subtotal: <%= render 'layouts/cart_subtotal' %> </h3>
       <% if current_order.subtotal > 0 %>
-        <a class="btn btn-sm btn-danger" href="/cart"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a> <a href="/checkout" class="btn btn-sm btn-primary"> CHECKOUT </a>
+        <a class="btn btn-sm btn-danger" href="/cart"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a> <a href="<%= url_for(:action => 'show', :controller => 'checkout', :only_path => false, :protocol => 'https') %>" class="btn btn-sm btn-primary"> CHECKOUT </a>
       <% end %>
     </div>
     <!--/.miniCartFooter-->
