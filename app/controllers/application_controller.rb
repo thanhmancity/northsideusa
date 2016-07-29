@@ -5,10 +5,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
 
   def self.paytrace_api
-    OAuth2::Client.new(
-      nil, nil,
-      site: 'https://api.paytrace.com',
-    ).password.get_token('northside_ecommerce', 'B!gSho3H0rn')
+    if ENV['RAILS_ENV'] == "development"
+      OAuth2::Client.new(
+        nil, nil,
+        site: 'https://api.paytrace.com',
+      ).password.get_token('demo123', 'demo123')
+    else
+      OAuth2::Client.new(
+        nil, nil,
+        site: 'https://api.paytrace.com',
+      ).password.get_token('northside_ecommerce', 'B!gSho3H0rn')
+    end
   end
 
   protected

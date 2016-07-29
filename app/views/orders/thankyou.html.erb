@@ -28,13 +28,13 @@
                 <%= render 'orders/order_item', product: order_item.product, product_color: order_item.product_color, size: order_item.size, order_item: order_item, show_total: true %>
               <% end %>
               <tr>
-                <td colspan="2" style="text-align: center; padding: 10px 0;">Total products</td>
+                <td colspan="2" style="text-align: center; padding: 10px 0;">Total productses</td>
                 <td class="price" style="width:15%"><%= render 'layouts/cart_subtotal' %></td>
               </tr>
               <tr style="">
-                <td colspan="2" style="text-align: center; padding: 10px 0;">Shipping</td>
+                <td colspan="2" style="text-align: center; padding: 10px 0;">Shippoing</td>
                 <td class="price">
-                  <%= number_to_currency(current_order.shipping) %>
+                  <%= number_to_currency(@order.shipping) %>
                   <% #if current_order.subtotal > 100 %>
                     <!--<span class="success">Free shipping!</span>-->
                   <% #else
@@ -45,15 +45,15 @@
               </tr>
               <tr class="cart-total-price ">
                 <td colspan="2" style="text-align: center; padding: 10px 0;">Total (tax excl.)</td>
-                <td class="price"><%= number_to_currency(current_order.pre_tax) %></td>
+                <td class="price"><%= number_to_currency(@order.pre_tax) %></td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: center; padding: 10px 0;">Total tax</td>
-                <td class="price" id="total-tax">$0.00</td>
+                <td class="price" id="total-tax"><%= number_to_currency(@order.tax) %></td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: center; padding: 10px 0;"> Total</td>
-                <td class=" site-color" id="total-price"><%= number_to_currency(current_order.total) %></td>
+                <td class=" site-color" id="total-price"><%= number_to_currency(@order.total) %></td>
               </tr>
               </tbody>
             </table>

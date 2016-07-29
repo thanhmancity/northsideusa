@@ -29,10 +29,24 @@ class OrdersController < ApplicationController
       @order_billing = OrderBilling.where(:order_id => @order.id).update_all(order_billing_params)
     end
     
+    @order_billing = OrderBilling.find_by(order_id: @order.id)
+    
     # API Call to PayTrace
     @transaction_error = nil
     # Build Request
     request = params[:sale]
+    
+    puts "State: " + @order_billing.bill_state.to_s
+    
+    if @order_billing.bill_state.to_s == "WA"
+      adjusted_tax = @order.total * 0.07
+      @order.tax = adjusted_tax
+      adjusted_total = @order.subtotal + @order.shipping + adjusted_tax
+      @order.total = adjusted_total
+      @order.save
+      @order = Order.where(:id => @order.id).update_all(tax: adjusted_tax, total: adjusted_total)
+      @order = Order.find_by(id: current_order.id)
+    end
 
     # request[:amount] = 0.2
     request[:amount] = @order.total
@@ -76,7 +90,7 @@ class OrdersController < ApplicationController
     @success = parsed_response["success"]
     puts @success
     
-    if @success == "true" && @approval_code != ""
+    if @success.to_s == "true" and @approval_code.to_s != ''
     
       @order_payment = OrderPayment.find_by(order_id: @order.id)
       if @order_payment
