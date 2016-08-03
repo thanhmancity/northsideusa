@@ -78,6 +78,20 @@ Rails.application.routes.draw do
   get 'contactus' => 'contact_us#index'
 
   get 'customerservice' => 'contact_us#index'
+
+
+  # REDIRECTS
+  get '/shoes/category/womens/' => redirect('/women', status: 301)
+  get '/shoes/category/mens/' => redirect('/men', status: 301)
+  get '/shoes/category/kids/' => redirect('/kids', status: 301)
+  get '/who-we-are/' => redirect('/about/whoweare', status: 301)
+  # get '/warranty/' => redirect('/women', status: 301)
+  get '/news/' => redirect('/about/news', status: 301)
+  get '/northside-return-policy/' => redirect('/returns', status: 301)
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
