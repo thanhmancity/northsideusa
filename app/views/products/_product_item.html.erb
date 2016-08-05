@@ -6,7 +6,7 @@
         <a data-toggle="modal" class="btn btn-xs btn-quickview" href="productmodal" data-target="#productSetailsModalAjax">Quick View </a>
       </div>
       -->
-      <a href="/productdetail/<%= product.pcid %>"><%= image_tag("product/" + product.id.to_s + "/" + product.name.downcase.gsub(' ', '-') + "-" + product.color.downcase.gsub(' ', '-').gsub('/', '-') + "-300.jpg", :class => "img-responsive") %></a>
+      <a href="/productdetail/<%= product.pcid %>"><%= image_tag("product/" + product.id.to_s + "/" + product.name.parameterize + "-" + product.color.parameterize + "-300.jpg", :class => "img-responsive") %></a>
 
       <!--<div class="promotion"><span class="new-product"> NEW</span> <span class="discount">15% OFF</span></div>-->
     </div>

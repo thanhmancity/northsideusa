@@ -1,6 +1,6 @@
 <tr class="miniCartProduct">
   <td style="width:20%" class="miniCartProductThumb">
-    <div><a href="/productdetail/<%= product_color.id.to_s %>"> <%= image_tag("product/" + product.id.to_s + "/" + product.name.downcase.gsub(' ', '-') + "-" + product_color.color.downcase.gsub(' ', '-').gsub('/', '-') + "-300.jpg") %> </a></div>
+    <div><a href="/productdetail/<%= product_color.id.to_s %>"> <%= image_tag("product/" + product.id.to_s + "/" + product.name.parameterize + "-" + product_color.color.parameterize + "-300.jpg") %> </a></div>
   </td>
   <td style="width:40%">
     <div class="miniCartDescription">
