@@ -125,6 +125,7 @@ class OrdersController < ApplicationController
   def thankyou
     @order = current_order
     @order_items = @order.order_items
+    OrderMailer.order_confirmation(@order).deliver_now
   end
 
   def destroy

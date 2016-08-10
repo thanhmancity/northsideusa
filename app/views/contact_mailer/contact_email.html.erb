@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Northside USA Contact Us Submission - <%= DateTime.now.to_date %></h1>
+    <p>A message from the website has been sent.<br></p>
+    <table>
+      <tr>
+        <td style="width: 10%;">Name:</td>
+        <td style="width: 90%"><%= @contact.name %></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">Email:</td>
+        <td style="width: 90%"><a href="mailto: <%= @contact.email_address %>"><%= @contact.email_address %></a></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">Message:</td>
+        <td style="width: 90%"><%= @contact.message %></td>
+      </tr>
+    </table>
+  </body>
+</html>

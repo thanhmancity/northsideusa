@@ -20,22 +20,25 @@
 
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <h3 class="block-title-5"> Questions, Comments, Concerns </h3>
-            <form role="form">
+            <%= form_for @contact, url: contactus_path do |f| %>
+            <%= hidden_field_tag 'submission_date', DateTime.now %>
               <div class="form-group">
-                <label for="exampleInputName">Name</label>
-                <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name">
+                <label for="name">Name</label>
+                <%= text_field_tag :name, nil, class: 'form-control', placeholder: 'Enter Name', required: true %>
               </div>
               <div class="form-group">
-                <label for="InputEmail1">Email address</label>
-                <input type="email" class="form-control" id="InputEmail1" placeholder="Enter email">
+                <label for="email_address">Email address</label>
+                <%= text_field_tag :email_address, nil, class: 'form-control', placeholder: 'Enter email', required: true, type: 'email' %>
               </div>
               <div class="form-group">
-                <label for="InputMessage1">Message</label>
-                <textarea class="form-control" rows="3" id="InputMessage1" placeholder="Message"></textarea>
+                <label for="foo">Message</label>
+                <%= text_area_tag :message, nil, rows: 3, placeholder: 'Message', class: 'form-control' %>
+                <!--<textarea class="form-control" rows="3" id="message" placeholder="Message"></textarea>-->
               </div>
-              <button type="submit" class="btn   btn-primary"><i class="fa fa-user"></i> Send
-              </button>
-            </form>
+              <!--<button type="submit" class="btn btn-primary"><i class="fa fa-user"></i> Send
+              </button>-->
+              <%= submit_tag nil, class: "btn btn-primary" %>
+            <% end %>
           </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
