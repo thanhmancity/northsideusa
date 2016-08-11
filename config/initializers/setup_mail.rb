@@ -1,6 +1,6 @@
 ActionMailer::Base.smtp_settings = {
   :address              => "server.triplettrading.com",
-  :port                 => 587,
+  :port                 => 25,
   :domain               => "northsideusa.com",
   :user_name            => "jeffj",
   :password             => "1TripleT!",
