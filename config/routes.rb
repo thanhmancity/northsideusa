@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   get 'privacypolicy' => 'info#privacypolicy'
 
   get 'contactus' => 'contact_us#index'
+  post 'contactus' => 'contact_us#create'
 
   get 'customerservice' => 'contact_us#index'
 

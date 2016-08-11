@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721231213) do
+ActiveRecord::Schema.define(version: 20160810222638) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 50
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20160721231213) do
 
   create_table "color_family", primary_key: "color_family_id", force: :cascade do |t|
     t.string "color_family", limit: 255
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "email_address",   limit: 255
+    t.text     "message",         limit: 4294967295
+    t.datetime "submission_date"
   end
 
   create_table "nsusa_posts", primary_key: "ID", force: :cascade do |t|
