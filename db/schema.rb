@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810222638) do
+ActiveRecord::Schema.define(version: 20160816222348) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 50
@@ -231,7 +231,8 @@ ActiveRecord::Schema.define(version: 20160810222638) do
     t.string  "width",            limit: 50
     t.binary  "has_stock",        limit: 1
     t.integer "inventory",        limit: 4
-    t.integer "size_type",        limit: 4,  default: 1
+    t.integer "size_type",        limit: 4,   default: 1
+    t.string  "sku",              limit: 100
   end
 
   add_index "sizes", ["product_color_id"], name: "fk_rails_72a1897f16", using: :btree
