@@ -1,9 +1,18 @@
 class OrderMailer < ApplicationMailer
-    default from: 'orders@triplettrading.com'
- 
-    def order_confirmation(order)
-        @order = order
-        @order_shipping = OrderShipping.find_by(order_id: @order.id)
-        mail(to: @order_shipping.email_address, subject: 'Order Confirmation - W' + @order.id.to_s)
+    default from: 'orders@triplettrading.com',
+        cc: 'orders@triplettrading.com',
+        bcc: 'jeffj@triplettrading.com'
+
+    def order_confirmation(order_id)
+      @order = Order.find_by(id: order_id)
+      @order_shipping = OrderShipping.find_by(order_id: @order.id)
+      @order_billing = OrderBilling.find_by(order_id: @order.id)
+      @order_items = @order.order_items
+      @order_payment = OrderPayment.find_by(order_id: @order.id)
+      Order.uncached do
+        @tax = Order.where(id: order_id).pluck(:tax).at(0)
+        @total = Order.where(id: order_id).pluck(:total).at(0)
+      end
+      mail(to: @order_shipping.email_address, subject: 'Order Confirmation - ' + @order.id.to_s)
     end
 end

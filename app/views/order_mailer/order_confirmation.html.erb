@@ -102,51 +102,58 @@ ul
             </td>
           </tr>
           <tr>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Order Date:<o:p></o:p></b></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">March 27, 2016 10:05 am<o:p></o:p></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Order Date:</b></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%= @order_shipping.updated_at.to_formatted_s(:long) %></p></td>
           </tr>
           <tr>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Billed To:<o:p></o:p></b></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">XXXXXXXXXXXX1141 (Visa)<o:p></o:p></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Billed To:</b></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><!-- XXXXXXXXXXXX1141 (Visa) --></p></td>
           </tr>
           <tr>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Transaction:<o:p></o:p></b></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">110583806 (<strong>Authorized</strong>)<o:p></o:p></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Transaction:</b></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%#= oac.to_s %> (<strong>Authorized</strong>)</p></td>
           </tr>
         </table>
         <p class="MsoNormal" style="background:white"><span style="font-size:10.0pt;font-family:'Lucida Sans Unicode',sans-serif;display:none"><o:p>&nbsp;</o:p></span></p>
         <table border="0" cellspacing="3" cellpadding="0" width="100%" style="width:100.0%">
           <tr>
-            <td valign="top" style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">Billed to <o:p></o:p></p><address><span style="font-size:13.5pt;font-style:normal">Dan Ferrin</span><span style="font-style:normal"><br><br>PO Box 512<br>Wilmore, Kansas 67155<br>USA<o:p></o:p></span></address></td>
-            <td valign="top" style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">Ship to <o:p></o:p></p><address><span style="font-size:13.5pt;font-style:normal">Dan Ferrin</span><span style="font-style:normal"><br><br>302 N. Main St.<br>Wilmore, Kansas 67155<br>USA<o:p></o:p></span></address><p style="margin-bottom:.25in">Shipping: Standard Shipping<o:p></o:p></p></td>
+            <td valign="top" style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">Billed to </p><address><span style="font-size:13.5pt;font-style:normal"><%= @order_billing.bill_first_name + ' ' + @order_billing.bill_last_name %></span><span style="font-style:normal"><br><%= @order_billing.bill_address1 %><br><%= @order_billing.bill_address2 %><br><%= @order_billing.bill_city %>, <%= @order_billing.bill_state %> <%= @order_billing.bill_zip %><br>USA</span></address></td>
+            <td valign="top" style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">Ship to </p><address><span style="font-size:13.5pt;font-style:normal"><%= @order_shipping.ship_first_name + ' ' + @order_shipping.ship_last_name %></span><span style="font-style:normal"><br><%= @order_shipping.ship_address1 %><br><%= @order_shipping.ship_address2 %><br><%= @order_shipping.ship_city %>, <%= @order_shipping.ship_state %> <%= @order_shipping.ship_zip %><br>USA</span></address><p style="margin-bottom:.25in">Shipping: Standard Shipping</p></td>
           </tr>
         </table>
         <p class="MsoNormal" style="background:white"><span style="font-size:10.0pt;font-family:'Lucida Sans Unicode',sans-serif;display:none"><o:p>&nbsp;</o:p></span></p>
         <table border="0" cellspacing="3" cellpadding="0" width="100%" style="width:100.0%;overflow:hidden">
           <thead>
           <tr>
-            <td width="50%" style="width:50.0%;padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Items Ordered<o:p></o:p></b></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Quantity<o:p></o:p></b></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><b>Item Price<o:p></o:p></b></p></td><td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><b>Item Total<o:p></o:p></b></p></td>
+            <td width="50%" style="width:50.0%;padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Items Ordered</b></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Quantity</b></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><b>Item Price</b></p></td><td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><b>Item Total</b></p></td>
           </tr>
           </thead>
+          <% @order_items.each do |order_item| %>
           <tr>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">Apex Mid – Men's US 9<br>312551M200xx090xxx <o:p></o:p></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal">1<o:p></o:p></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right">$69.99<o:p></o:p></p></td>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right">$69.99<o:p></o:p></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%= order_item.product.name %> – Men's US <%= order_item.size.size %> <br><%= order_item.size.sku %></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%= order_item.quantity %></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency order_item.unit_price %></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency order_item.total_price %></p></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td colspan="3" style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><b>Subtotal</b></p></td>
+            <td style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency(@order.subtotal) %>
+</p></td>
           </tr>
           <tr>
-            <td colspan="3" style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><b>Subtotal<o:p></o:p></b></p></td>
-            <td style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right">$69.99<o:p></o:p></p></td>
+            <td colspan="3" style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><b>Shipping</b></p></td>
+            <td style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency(@order.shipping) %></p></td>
           </tr>
           <tr>
-            <td colspan="3" style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><b>Shipping<o:p></o:p></b></p></td>
-            <td style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right">$5.00<o:p></o:p></p></td>
+            <td colspan="3" style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><b>Tax</b></p></td>
+            <td style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency(@tax) %></p></td>
           </tr>
           <tr>
-            <td colspan="3" style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><b>Total<o:p></o:p></b></p></td>
-            <td style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right">$74.99<o:p></o:p></p></td>
+            <td colspan="3" style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><b>Total</b></p></td>
+            <td style="padding:7.5pt 0in 0in 0in"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency(@total) %></p></td>
           </tr>
         </table>
       </div>
