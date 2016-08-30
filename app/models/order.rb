@@ -13,9 +13,13 @@ class Order < ActiveRecord::Base
   def subtotal
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end
+  
+  def total_quantity
+    order_items.collect { |oi| oi.valid? ? oi.quantity : 0 }.sum
+  end
 
   def shipping
-    subtotal > 99.99 ? 0 : 5
+    subtotal > 99.99 ? 0 : (total_quantity * 5)
   end
 
   def pre_tax
