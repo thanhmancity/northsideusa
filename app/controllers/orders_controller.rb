@@ -125,6 +125,9 @@ class OrdersController < ApplicationController
   end
   def thankyou
     @order = Order.find_by(id: current_order.id)
+    @order_items = @order.order_items
+    @tax = Order.where(id: @order.id).pluck(:tax).at(0)
+    @total = Order.where(id: @order.id).pluck(:total).at(0)
     OrderMailer.order_confirmation(@order.id).deliver_now
   end
 
