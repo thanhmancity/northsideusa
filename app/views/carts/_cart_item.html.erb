@@ -6,7 +6,7 @@
   <td>
     <div class="CartDescription">
       <h4><a href="/productdetail/<%= product_color.id.to_s %>"><%= product.name %></a></h4>
-      <span class="color"><%= product_color.color %></span>, Size: <span class="size"><%= size.size %></span>
+      <span class="color"><%= product_color.color %></span>, Size: <span class="size"><%= order_item.item_gender %> US <%= size.size %></span>
       <div class="price"><span><%= number_to_currency order_item.unit_price %></span></div>
     </div>
   </td>

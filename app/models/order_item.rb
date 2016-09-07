@@ -25,6 +25,37 @@ class OrderItem < ActiveRecord::Base
     unit_price * quantity
   end
 
+  def item_gender
+    # gender = Product.where(id: product.id).pluck(:gender).at(0)
+    # age_group = Product.where(id: product.id).pluck(:age_group).at(0)
+    gender = product.gender
+    age_group = product.age_group
+    case gender
+    when "m"
+      case age_group
+      when "a"
+        display_gender = "Men's"
+      when "k"
+        display_gender = "Boys'"
+      end
+    when "f"
+      case age_group
+      when "a"
+        display_gender = "Women's"
+      when "k"
+        display_gender = "Girls'"
+      end
+    when "u"
+      case age_group
+      when "a"
+        display_gender = "Adult's"
+      when "k"
+        display_gender = "Kids'"
+      end
+    end
+    return display_gender
+  end
+
 private
   def product_present
     if product.nil?

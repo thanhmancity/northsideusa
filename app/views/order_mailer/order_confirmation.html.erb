@@ -132,7 +132,7 @@ ul
           </thead>
           <% @order_items.each do |order_item| %>
           <tr>
-            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%= order_item.product.name %> – Men's US <%= order_item.size.size %> <br><%= order_item.size.sku %></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%= order_item.product.name %> – <%= order_item.item_gender %> US <%= order_item.size.size %> <br><%= order_item.size.sku %></p></td>
             <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%= order_item.quantity %></p></td>
             <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency order_item.unit_price %></p></td>
             <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal" align="right" style="text-align:right"><%= number_to_currency order_item.total_price %></p></td>
