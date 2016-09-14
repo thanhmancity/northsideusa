@@ -1,7 +1,7 @@
 class OrderMailer < ApplicationMailer
     default from: 'orders@triplettrading.com',
         cc: 'orders@triplettrading.com',
-        bcc: 'jeffj@triplettrading.com'
+        bcc: ['jeffj@triplettrading.com', 'WebOrdersGroup@triplettrading.com']
 
     def order_confirmation(order_id)
       @order = Order.find_by(id: order_id)
