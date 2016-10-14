@@ -23,6 +23,14 @@ Rails.application.routes.draw do
 
   #resources :products, only: [:index, :show, :men]
   get 'products' => 'products#index'
+  get 'active' => 'products#active'
+  get 'hunting' => 'products#hunting'
+  get 'lifestyle' => 'products#lifestyle'
+  get 'slippers' => 'products#slippers'
+  get 'sport' => 'products#sport'
+  get 'trail' => 'products#trail'
+  get 'watershoes' => 'products#watershoes'
+  get 'polar' => 'products#polar'
   get 'men' => 'products#men'
   get 'women' => 'products#women'
   get 'kids' => 'products#kids'

@@ -1,11 +1,51 @@
 class ProductsController < ApplicationController
+  def show
+    @products = Product.find(params[:id])
+  end
+  
   def index
     @products = Product.joins(:product_colors).order(:name).where(enabled: 1).where('product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
     @order_item = current_order.order_items.new
   end
-
-  def show
-    @products = Product.find(params[:id])
+  
+  def active
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 1 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
+  end
+  
+  def hunting
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 2 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
+  end
+  
+  def lifestyle
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 3 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
+  end
+  
+  def slippers
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 4 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
+  end
+  
+  def sport
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 5 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
+  end
+  
+  def trail
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 6 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
+  end
+  
+  def watershoes
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 7 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
+  end
+  
+  def polar
+    @products = Product.joins(:product_colors, :product_categories).order(:name).where(enabled: 1).where('product_categories.category_id = 8 AND product_colors.enabled = 1').select("products.*, product_colors.color, product_colors.id AS pcid")
+    @order_item = current_order.order_items.new
   end
 
   def men
