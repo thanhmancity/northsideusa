@@ -23,6 +23,14 @@ Rails.application.routes.draw do
 
   #resources :products, only: [:index, :show, :men]
   get 'products' => 'products#index'
+  get 'active' => 'products#active'
+  get 'hunting' => 'products#hunting'
+  get 'lifestyle' => 'products#lifestyle'
+  get 'slippers' => 'products#slippers'
+  get 'sport' => 'products#sport'
+  get 'trail' => 'products#trail'
+  get 'watershoes' => 'products#watershoes'
+  get 'polar' => 'products#polar'
   get 'men' => 'products#men'
   get 'women' => 'products#women'
   get 'kids' => 'products#kids'
@@ -36,6 +44,7 @@ Rails.application.routes.draw do
   get 'men/sport' => 'products#men_sport'
   get 'men/trail' => 'products#men_trail'
   get 'men/watershoes' => 'products#men_watershoes'
+  get 'men/polar' => 'products#men_polar'
   get 'women/active' => 'products#women_active'
   get 'women/hunting' => 'products#women_hunting'
   get 'women/lifestyle' => 'products#women_lifestyle'
@@ -43,6 +52,7 @@ Rails.application.routes.draw do
   get 'women/sport' => 'products#women_sport'
   get 'women/trail' => 'products#women_trail'
   get 'women/watershoes' => 'products#women_watershoes'
+  get 'women/polar' => 'products#women_polar'
   get 'kids/active' => 'products#kids_active'
   get 'kids/hunting' => 'products#kids_hunting'
   get 'kids/lifestyle' => 'products#kids_lifestyle'
@@ -50,6 +60,7 @@ Rails.application.routes.draw do
   get 'kids/sport' => 'products#kids_sport'
   get 'kids/trail' => 'products#kids_trail'
   get 'kids/watershoes' => 'products#kids_watershoes'
+  get 'kids/polar' => 'products#kids_polar'
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, only: [:create, :update, :destroy]
