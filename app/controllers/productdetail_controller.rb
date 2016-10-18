@@ -1,4 +1,7 @@
 class ProductdetailController < ApplicationController
+  #extend FriendlyId
+  #friendly_id :name_and_color
+
   def index
   end
 
@@ -7,5 +10,9 @@ class ProductdetailController < ApplicationController
     @product = Product.where(id: @product_color.product_id)
     @sizes = Size.where(product_color_id: params[:id])
     @order_item = current_order.order_items.new
+  end
+
+  def name_and_color
+    "#{name}-#{color}-#{id}"
   end
 end
