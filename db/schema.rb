@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830161118) do
+ActiveRecord::Schema.define(version: 20161018161527) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 50
@@ -224,6 +224,17 @@ ActiveRecord::Schema.define(version: 20160830161118) do
     t.boolean  "enabled"
     t.datetime "created_at",                                                            null: false
     t.datetime "updated_at",                                                            null: false
+  end
+
+  create_table "promos", force: :cascade do |t|
+    t.integer  "promo_type_id", limit: 4
+    t.string   "promo_code",    limit: 30
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean  "redeemed"
+    t.datetime "redeemed_date"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "sizes", force: :cascade do |t|
