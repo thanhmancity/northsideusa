@@ -61,12 +61,13 @@ Rails.application.routes.draw do
   get 'kids/trail' => 'products#kids_trail'
   get 'kids/watershoes' => 'products#kids_watershoes'
   get 'kids/polar' => 'products#kids_polar'
-  resource :cart, only: [:show]
+
+  #resource :cart, only: [:show]
+  get 'cart' => 'carts#show'
+  post 'apply_promo' => 'carts#apply_promo'
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, only: [:create, :update, :destroy]
   get 'orders/thankyou/:id' => 'orders#thankyou'
-
-  get 'cart' => 'cart#index'
 
   get 'checkout' => 'checkout#show'
   get 'checkout/shipping'

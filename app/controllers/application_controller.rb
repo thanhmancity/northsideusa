@@ -35,4 +35,12 @@ class ApplicationController < ActionController::Base
       Order.new
     end
   end
+
+  def current_promo
+    if !session[:promo_id].nil?
+      Promo.find(session[:promo_id])
+    else
+      Promo.new
+    end
+  end
 end

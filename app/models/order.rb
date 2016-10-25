@@ -11,15 +11,15 @@ class Order < ActiveRecord::Base
   before_save :update_values
 
   def subtotal
-    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price - (oi.discount || 0)) : 0 }.sum
   end
-  
+
   def total_quantity
     order_items.collect { |oi| oi.valid? ? oi.quantity : 0 }.sum
   end
 
   def shipping
-    subtotal > 99.99 ? 0 : (total_quantity * 5)
+    subtotal > 99.99 ? 0 : (total_quantity * 5) - (shipping_discount || 0)
   end
 
   def pre_tax

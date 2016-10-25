@@ -22,7 +22,7 @@ class OrderItem < ActiveRecord::Base
   end
 
   def total_price
-    unit_price * quantity
+    (unit_price * quantity) - (discount || 0)
   end
 
   def item_gender
