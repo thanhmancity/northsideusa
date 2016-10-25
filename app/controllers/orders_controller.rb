@@ -116,7 +116,6 @@ class OrdersController < ApplicationController
       # Grab the current order
       @order = current_order
       @order_items = @order.order_items
-      # Kill Session?
 
       # render Order_thanks
       # render :action => "thankyou"
@@ -137,6 +136,8 @@ class OrdersController < ApplicationController
     @total = Order.where(id: @order.id).pluck(:total).at(0)
     @promo = current_promo
     OrderMailer.order_confirmation(@order.id, @promo.id).deliver_now
+    session[:order_id] = nil
+    session[:promo_id] = nil
   end
 
   def destroy
