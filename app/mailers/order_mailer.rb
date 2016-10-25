@@ -3,7 +3,7 @@ class OrderMailer < ApplicationMailer
         cc: 'orders@triplettrading.com',
         bcc: ['jeffj@triplettrading.com', 'WebOrdersGroup@triplettrading.com']
 
-    def order_confirmation(order_id)
+    def order_confirmation(order_id, promo_id)
       @order = Order.find_by(id: order_id)
       @order_shipping = OrderShipping.find_by(order_id: @order.id)
       @order_billing = OrderBilling.find_by(order_id: @order.id)
@@ -13,6 +13,7 @@ class OrderMailer < ApplicationMailer
         @tax = Order.where(id: order_id).pluck(:tax).at(0)
         @total = Order.where(id: order_id).pluck(:total).at(0)
       end
+      @promo = Promo.find_by(id: promo_id) || ''
       mail(to: @order_shipping.email_address, subject: 'Order Confirmation - ' + @order.id.to_s)
     end
 end

@@ -113,6 +113,10 @@ ul
             <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Transaction:</b></p></td>
             <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%#= oac.to_s %> (<strong>Authorized</strong>)</p></td>
           </tr>
+          <tr>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><b>Promotion:</b></p></td>
+            <td style="padding:.75pt .75pt .75pt .75pt"><p class="MsoNormal"><%#= @promo.promo_code || '' %></p></td>
+          </tr>
         </table>
         <p class="MsoNormal" style="background:white"><span style="font-size:10.0pt;font-family:'Lucida Sans Unicode',sans-serif;display:none"><o:p>&nbsp;</o:p></span></p>
         <table border="0" cellspacing="3" cellpadding="0" width="100%" style="width:100.0%">

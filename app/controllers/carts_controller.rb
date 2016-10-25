@@ -49,7 +49,7 @@ class CartsController < ApplicationController
     if @promo_error_state == 0
       @promo_error = "Success!"
       # Set session
-      # session[:promo_id] = @promo.id
+      session[:promo_id] = @promo.id
       # Deduct the cheapest pair
       @order_item.update_attributes(discount: @order_min_price)
       @order_items = @order.order_items

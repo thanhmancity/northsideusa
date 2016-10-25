@@ -5,11 +5,15 @@ class OrdersController < ApplicationController
     @order_item = @order.order_items.new(order_item_params)
     @order.save
     session[:order_id] = @order.id
+    @promo = current_promo
   end
 
   def update
     # Get current order
     @order = current_order
+    
+    # Get promos
+    @promo = current_promo
 
     # Update Shipping
     @order_shipping = OrderShipping.find_by(order_id: @order.id)
@@ -105,6 +109,9 @@ class OrdersController < ApplicationController
 
       # Update Order Status
       @order = Order.where(:id => @order.id).update_all(order_status_id: 2)
+      
+      # Update Promo redemtion status
+      @promo = Promo.where(:id => @promo.id).update_all(redeemed: 1, redeemed_date: DateTime.now.to_date)
 
       # Grab the current order
       @order = current_order
@@ -128,7 +135,8 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
     @tax = Order.where(id: @order.id).pluck(:tax).at(0)
     @total = Order.where(id: @order.id).pluck(:total).at(0)
-    OrderMailer.order_confirmation(@order.id).deliver_now
+    @promo = current_promo
+    OrderMailer.order_confirmation(@order.id, @promo.id).deliver_now
   end
 
   def destroy

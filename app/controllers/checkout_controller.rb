@@ -2,6 +2,7 @@ class CheckoutController < ApplicationController
   def show
     @order = current_order
     @cart_total = cart_total
+    @promo = current_promo
   end
   def shipping
   end
