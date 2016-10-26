@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'northside-project-sole' => 'about#article3'
   get 'northside-expands-trail-line-to-meet-more-needs-than-ever-before' => 'about#article4'
   get 'northside-opens-new-global-headquarters' => 'about#article5'
+  get 'northside-now-available-in-china' => 'about#article6'
 
   get 'productlist' => 'productlist#index'
   get 'productlist/mens'
