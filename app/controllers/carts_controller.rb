@@ -50,13 +50,29 @@ class CartsController < ApplicationController
       @promo_error = "Success!"
       # Set session
       session[:promo_id] = @promo.id
-      # Deduct the cheapest pair
-      @order_item.update_attributes(discount: @order_min_price)
-      @order_items = @order.order_items
-      # Deduct shipping cost
-      @order.update_attributes(shipping_discount: 5)
-      @order_shipping_discount = @order.shipping_discount
-      @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
+    
+      # Determine promo type
+      @promo_type = @promo.promo_type_id
+      
+      case @promo_type
+      # Promo Type 1: Free Pair - Free Shipping
+      when @promo_type_id = 1
+        # Deduct the cheapest pair
+        @order_item.update_attributes(discount: @order_min_price)
+        @order_items = @order.order_items
+        # Deduct shipping cost
+        @order.update_attributes(shipping_discount: 5)
+        @order_shipping_discount = @order.shipping_discount
+        @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
+      # Promo Type 2: Percentage Off Subtotal
+      when @promo_type_id = 2
+        @order_item.update_attributes(discount: @order_item.unit_price * 0.3)
+        @order.update_attributes(shipping_discount: 0)
+        @order_shipping_discount = @order.shipping_discount
+        @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
+      else
+        # do something, or nothing
+      end
     end
   end
 end
