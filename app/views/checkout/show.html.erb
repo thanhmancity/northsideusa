@@ -243,19 +243,19 @@
                     <table style="width:100%" class="table-bordered table tablelook2">
                       <tbody>
                       <tr>
-                        <td> Carrier</td>
+                        <td>Carrier</td>
                         <td>Method</td>
-                        <td>Information</td>
-                        <td>Price!</td>
+                        <!-- <td>Information</td> -->
+                        <td>Price</td>
                       </tr>
                       <tr>
                         <td>
                           <label class="radio">
                           <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> <i class="fa fa-truck fa-2x"></i> </label>
                         </td>
-                        <td>By Road</td>
-                        <td>Pick up in-store</td>
-                        <td>Free!</td>
+                        <td>By Ground</td>
+                        <!-- <td>Pick up in-store</td> -->
+                        <td><%= number_to_currency(current_order.shipping) %></td>
                       </tr>
                       </tbody>
                     </table>
@@ -317,9 +317,6 @@
                         <div class="col-lg-4 col-md-4 col-sm-4">
                           <select class="form-control" required aria-required="true" name="sale[credit_card][expiration_year]">
                             <option value="">Year</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
                             <option value="2016">2016</option>
                             <option value="2017">2017</option>
                             <option value="2018">2018</option>
