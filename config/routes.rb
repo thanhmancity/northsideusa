@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'northside-opens-new-global-headquarters' => 'about#article5'
   get 'northside-now-available-in-china' => 'about#article6'
 
+  get 'retaillocations' => 'retail_locations#index'
+
   get 'productlist' => 'productlist#index'
   get 'productlist/mens'
   get 'productlist/kids'

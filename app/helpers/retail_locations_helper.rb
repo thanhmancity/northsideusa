@@ -1,0 +1,2 @@
+module RetailLocationsHelper
+end
