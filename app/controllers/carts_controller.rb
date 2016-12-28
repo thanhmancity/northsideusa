@@ -66,7 +66,12 @@ class CartsController < ApplicationController
         @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
       # Promo Type 2: Percentage Off Subtotal
       when @promo_type_id = 2
-        @order_item.update_attributes(discount: @order_item.unit_price * 0.3)
+        if (@promo.id = 'CS16-20147')
+          @discount = 0.5
+        else 
+          @discount = 0.3
+        end
+        @order_item.update_attributes(discount: @order_item.unit_price * @discount)
         @order.update_attributes(shipping_discount: 0)
         @order_shipping_discount = @order.shipping_discount
         @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
