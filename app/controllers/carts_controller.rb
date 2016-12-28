@@ -50,10 +50,10 @@ class CartsController < ApplicationController
       @promo_error = "Success!"
       # Set session
       session[:promo_id] = @promo.id
-    
+
       # Determine promo type
       @promo_type = @promo.promo_type_id
-      
+
       case @promo_type
       # Promo Type 1: Free Pair - Free Shipping
       when @promo_type_id = 1
@@ -66,12 +66,13 @@ class CartsController < ApplicationController
         @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
       # Promo Type 2: Percentage Off Subtotal
       when @promo_type_id = 2
-        if (@promo.id = 'CS16-20147')
-          @discount = 0.5
-        else 
-          @discount = 0.3
+        percentOff = 0
+        if @enteredCode == "CS16-20147"
+          percentOff = 0.5
+        else
+          percentOff = 0.3
         end
-        @order_item.update_attributes(discount: @order_item.unit_price * @discount)
+        @order_item.update_attributes(discount: @order_item.unit_price * percentOff)
         @order.update_attributes(shipping_discount: 0)
         @order_shipping_discount = @order.shipping_discount
         @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
