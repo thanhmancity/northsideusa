@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, only: [:create, :update, :destroy]
   get 'orders/thankyou/:id' => 'orders#thankyou'
+  get 'orders/shipped/:id' => 'orders#shipped'
 
   get 'checkout' => 'checkout#show'
   get 'checkout/shipping'

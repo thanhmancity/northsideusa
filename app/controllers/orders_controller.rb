@@ -139,6 +139,11 @@ class OrdersController < ApplicationController
     session[:order_id] = nil
     session[:promo_id] = nil
   end
+  def shipped
+    # take a form field value for tracking number and store it with the order
+    # Grab order data
+    # call shipping confirmation mailer code
+  end
 
   def destroy
     @order = current_order

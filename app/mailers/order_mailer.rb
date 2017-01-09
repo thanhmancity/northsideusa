@@ -16,4 +16,8 @@ class OrderMailer < ApplicationMailer
       @promo = Promo.find_by(id: promo_id) || ''
       mail(to: @order_shipping.email_address, subject: 'Order Confirmation - ' + @order.id.to_s)
     end
+    
+    def shipping_confirmation(order_id)
+      
+    end
 end
