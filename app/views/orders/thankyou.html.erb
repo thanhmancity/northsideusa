@@ -1,3 +1,22 @@
+<script>
+dataLayer = [{
+    'transactionId': '<%= @order.id %>', // Transaction ID - Type:String - Required 
+    'transactionTotal': <%= @total %>, //total revenue - Type:Numeric - Required
+    'transactionTax': <%= @tax %>, // Tax amount for transaction - Type:Numeric - Optional to use
+    'transactionShipping': <%= @order.shipping %>, // Shipping cost - Type:Numeric - Optional to use
+    'transactionProducts': [
+      <% @order_items.each do |order_item| %>
+        {
+        'sku': '<%= order_item.size.sku %>', // Product SKU - Type:String - Required 
+        'name': '<%= order_item.product.name %>', // Product Name - Type:String - Required
+        'price': <%= order_item.unit_price %>, // Product Price - Type:Numeric - Required 
+        'quantity': <%= order_item.quantity %> // Product Quantity - Type:Numeric - Required 
+        }<% if order_item != @order_items.last %>,<% end %>
+      <% end %>
+    ]
+}];
+</script>
+
 <div class="container main-container headerOffset">
   <div class="row">
     <div class="breadcrumbDiv col-lg-12">
