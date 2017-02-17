@@ -66,9 +66,7 @@ $(document).ready(function () {
     });
 
 
-    $('.slider-v2').before('<ul id="pager"></ul>').cycle({
-        
-        
+    $('.slider-v2').cycle({
         //Specify options
         fx: 'scrollHorz',
         //Name of transition effect 
@@ -79,19 +77,11 @@ $(document).ready(function () {
         easeIn: 'easeInOutExpo',
         // easing 
         easeOut: 'easeInOutExpo',
-        pager: '#pager'
-
+        pager: '#pager',
+        //Selector for element to use as pager container 
     });
-    
-    var seen = {};
-$('#pager a').each(function() {
-    var txt = $(this).text();
-    if (seen[txt])
-        $(this).remove();
-    else
-        seen[txt] = true;
-});
-    
+
+
     // show loading image
     $('#loader_img').show();
 
