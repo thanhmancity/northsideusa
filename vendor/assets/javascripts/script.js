@@ -101,7 +101,7 @@ $(document).ready(function () {
     })
 
 
-    // Home Look 2 || Single product showcase 
+    // Home Look 2 || Single product showcase
 
     // productShowCase  carousel
     var pshowcase = $("#productShowCase");
@@ -208,12 +208,12 @@ $(document).ready(function () {
 
 
     $(".getFullSearch").on('click', function (e) {
-        $('.search-full').addClass("active"); //you can list several class names 
+        $('.search-full').addClass("active"); //you can list several class names
         e.preventDefault();
     });
 
     $('.search-close').on('click', function (e) {
-        $('.search-full').removeClass("active"); //you can list several class names 
+        $('.search-full').removeClass("active"); //you can list several class names
         e.preventDefault();
     });
 
@@ -258,15 +258,15 @@ $(document).ready(function () {
         });
     });
 
-    // Add to Wishlist Click Event	 // Only For Demo Purpose	
+    // Add to Wishlist Click Event	 // Only For Demo Purpose
 
     $('.add-fav').click(function (e) {
         e.preventDefault();
-        $(this).addClass("active"); // ADD TO WISH LIST BUTTON 
+        $(this).addClass("active"); // ADD TO WISH LIST BUTTON
         $(this).attr('data-original-title', 'Added to Wishlist');// Change Tooltip text
     });
 
-    // List view and Grid view 
+    // List view and Grid view
 
     $(".change-view .list-view, .change-view-flat .list-view").click(function (e) { //use a class, since your ID gets mangled
         e.preventDefault();
@@ -302,7 +302,7 @@ $(document).ready(function () {
 
     $('div.has-equal-height-child > div.is-equal').responsiveEqualHeightGrid();
 
-    // product details color switch 
+    // product details color switch
     $(".swatches li").click(function () {
         $(".swatches li.selected").removeClass("selected");
         $(this).addClass('selected');
@@ -382,7 +382,7 @@ $(document).ready(function () {
      Parallax
      ====================================*/
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // Detect ios User // 
+        // Detect ios User //
         $('.parallax-section').addClass('isios');
         $('.navbar-header').addClass('isios');
         $('.blog-intro').addClass('isios');
@@ -390,7 +390,7 @@ $(document).ready(function () {
     }
 
     if (/Android|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        // Detect Android User // 
+        // Detect Android User //
         $('.parallax-section').addClass('isandroid');
     }
 
@@ -401,7 +401,7 @@ $(document).ready(function () {
 
 
     } else {
-        // All Desktop 
+        // All Desktop
         $(window).bind('scroll', function (e) {
             parallaxScroll();
         });
@@ -512,18 +512,18 @@ $(document).ready(function () {
      Global Plugin
      ====================================*/
 
-    // For stylish input check box 
+    // For stylish input check box
 
 
     $(document).ready(function () {
 
-        $('input').iCheck({
-            // checkboxClass: 'icheckbox_minimal-green',
-            // radioClass: 'iradio_minimal-green'
-
-            checkboxClass: 'icheckbox_square-green iCheck-margin',
-            radioClass: 'iradio_square-green iChk iCheck-margin'
-        });
+        // $('input').iCheck({
+        //     // checkboxClass: 'icheckbox_minimal-green',
+        //     // radioClass: 'iradio_minimal-green'
+        //
+        //     checkboxClass: 'icheckbox_square-green iCheck-margin',
+        //     radioClass: 'iradio_square-green iChk iCheck-margin'
+        // });
 
 
     });
@@ -641,6 +641,31 @@ $(document).ready(function () {
 
     });
 
+
+
+    $("#checkboxes-0").on("click", function() {
+      var isChecked;
+      isChecked = $(this).is(':checked');
+      if (isChecked) {
+          $('#bill_first_name').val($('#ship_first_name').val());
+          $('#bill_last_name').val($('#ship_last_name').val());
+          $('#bill_address1').val($('#ship_address1').val());
+          $('#bill_address2').val($('#ship_address2').val());
+          $('#bill_city').val($('#ship_city').val());
+          $('#bill_zip').val($('#ship_zip').val());
+          $('#select2-bill_state-container').text($('#select2-ship_state-container').text());
+          $('#select2-bill_state-container').prop('title', $('#select2-ship_state-container').text());
+
+        }
+        else {
+          $('#bill_first_name').val('');
+          $('#bill_last_name').val('');
+          $('#bill_address1').val('');
+          $('#bill_address2').val('');
+          $('#bill_city').val('');
+          $('#bill_zip').val('');
+        }
+      });
 
     /*=======================================================================================
      end
