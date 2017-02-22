@@ -547,7 +547,8 @@ $(document).ready(function () {
 
     // bootstrap tooltip
     // $('.tooltipHere').tooltip();
-    $('.tooltipHere').tooltip('hide')
+    // $('.tooltipHere').tooltip('hide')
+    $('.tooltipHere').hide();
 
 
     // dropdown-menu  Fix || Stop just one dropdown toggle from closing on click
