@@ -64,7 +64,7 @@ class CartsController < ApplicationController
         @order.update_attributes(shipping_discount: 5)
         @order_shipping_discount = @order.shipping_discount
         @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
-      # Promo Type 2: Percentage Off Subtotal
+      # Promo Type 2: SUOC Percentage Off Subtotal
       when @promo_type_id = 2
         percentOff = 0
         if @enteredCode == "CS16-20147"
@@ -72,6 +72,13 @@ class CartsController < ApplicationController
         else
           percentOff = 0.3
         end
+        @order_item.update_attributes(discount: @order_item.unit_price * percentOff)
+        @order.update_attributes(shipping_discount: 0)
+        @order_shipping_discount = @order.shipping_discount
+        @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
+      # Promo Type 3: Site-wide Percentage Off Subtotal
+      when @promo_type_id = 3
+        percentOff = 0.25
         @order_item.update_attributes(discount: @order_item.unit_price * percentOff)
         @order.update_attributes(shipping_discount: 0)
         @order_shipping_discount = @order.shipping_discount

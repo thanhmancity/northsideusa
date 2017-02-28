@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   def update
     # Get current order
     @order = current_order
-    
+
     # Get promos
     @promo = current_promo
 
@@ -94,6 +94,10 @@ class OrdersController < ApplicationController
     @success = parsed_response["success"]
     puts @success
 
+    # For Testing
+    # @success = "true"
+    # @approval_code = "Wheeeee!"
+
     if @success.to_s == "true" and @approval_code.to_s != ''
 
       @order_payment = OrderPayment.find_by(order_id: @order.id)
@@ -109,9 +113,11 @@ class OrdersController < ApplicationController
 
       # Update Order Status
       @order = Order.where(:id => @order.id).update_all(order_status_id: 2)
-      
+
       # Update Promo redemtion status
-      @promo = Promo.where(:id => @promo.id).update_all(redeemed: 1, redeemed_date: DateTime.now.to_date)
+      if (@promo.promo_type_id != 3)
+        @promo = Promo.where(:id => @promo.id).update_all(redeemed: 1, redeemed_date: DateTime.now.to_date)
+      end
 
       # Grab the current order
       @order = current_order
