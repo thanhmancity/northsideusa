@@ -1,6 +1,10 @@
 //$(".error").html("<%= @enteredCode %>" + ": " + "<%= @promo_error %>" + "</br><a href=/cart>Try another code</a>")
 $(".couponForm").html("<%= @enteredCode %>" + ": " + "<%= @promo_error %>" + "</br><a href=/cart>Try another code</a>")
-$("#itemDiscount-<%= @order_item.product_color_id %>").html("$<%= number_with_precision(@order_item.discount, :precision => 2) %>")
+<% @order_items.each do |order_item| %>
+  $(".itemDiscount-<%= order_item.id %>").html("$<%= number_with_precision(order_item.discount, :precision => 2) %>")
+  $(".itemTotalPrice-<%= order_item.id %>").html("<%= number_to_currency order_item.total_price %>")
+<% end %>
+$("#itemDiscount-<%= @order_item.id %>").html("$<%= number_with_precision(@order_item.discount, :precision => 2) %>")
 $("#itemTotalPrice").html("<%= number_to_currency @order_item.total_price %>")
 $("#cartSubtotal").html("<%= number_to_currency(@order.subtotal) %>")
 $("#orderShipping").html("<%= number_to_currency @order_shipping %>")

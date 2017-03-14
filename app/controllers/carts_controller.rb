@@ -16,9 +16,6 @@ class CartsController < ApplicationController
     # Get the promo code entered
     @promo = Promo.find_by promo_code: params[:promo_code]
 
-    # Count the pairs of shoes in the cart
-    @order_item_count = @order_items.length
-
     # Determine the cheapest pair
     @order_min = @order_items.min_by {|item| item.unit_price }
     @order_min_price = @order_min.unit_price
@@ -57,6 +54,10 @@ class CartsController < ApplicationController
       case @promo_type
       # Promo Type 1: Free Pair - Free Shipping
       when @promo_type_id = 1
+        # Determine the cheapest pair
+        @order_min = @order_items.min_by {|item| item.unit_price }
+        @order_min_price = @order_min.unit_price
+        @order_item = @order.order_items.find(@order_min.id)
         # Deduct the cheapest pair
         @order_item.update_attributes(discount: @order_min_price)
         @order_items = @order.order_items
@@ -72,14 +73,18 @@ class CartsController < ApplicationController
         else
           percentOff = 0.3
         end
-        @order_item.update_attributes(discount: @order_item.unit_price * percentOff)
+        @order_items.each do |order_item|
+          order_item.update_attributes(discount: order_item.unit_price * percentOff)
+        end
         @order.update_attributes(shipping_discount: 0)
         @order_shipping_discount = @order.shipping_discount
         @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
       # Promo Type 3: Site-wide Percentage Off Subtotal
       when @promo_type_id = 3
         percentOff = 0.25
-        @order_item.update_attributes(discount: @order_item.unit_price * percentOff)
+        @order_items.each do |order_item|
+          order_item.update_attributes(discount: order_item.unit_price * percentOff)
+        end
         @order.update_attributes(shipping_discount: 0)
         @order_shipping_discount = @order.shipping_discount
         @order_shipping = (@order.shipping != 0) ? @order.shipping - @order_shipping_discount : 0
