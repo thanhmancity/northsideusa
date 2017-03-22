@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109213036) do
+ActiveRecord::Schema.define(version: 20170322194351) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 50
@@ -177,15 +177,16 @@ ActiveRecord::Schema.define(version: 20170109213036) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",                    precision: 9, scale: 2
-    t.decimal  "tax",                         precision: 9, scale: 2
-    t.decimal  "shipping",                    precision: 9, scale: 2
-    t.decimal  "discount",                    precision: 9, scale: 2
-    t.decimal  "shipping_discount",           precision: 9, scale: 2
-    t.decimal  "total",                       precision: 9, scale: 2
+    t.decimal  "subtotal",                      precision: 9, scale: 2
+    t.decimal  "tax",                           precision: 9, scale: 2
+    t.decimal  "shipping",                      precision: 9, scale: 2
+    t.decimal  "discount",                      precision: 9, scale: 2
+    t.decimal  "shipping_discount",             precision: 9, scale: 2
+    t.decimal  "total",                         precision: 9, scale: 2
     t.integer  "order_status_id",   limit: 4
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.string   "tracking_number",   limit: 255
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
