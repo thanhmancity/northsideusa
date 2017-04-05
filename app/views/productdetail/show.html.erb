@@ -22,6 +22,8 @@
           <a href="<%= image_url("product/" + @product.first.id.to_s + "/" + @product.first.name.parameterize + "-" + @product_color.color.parameterize + "-700.jpg") %>"><%= image_tag("product/" + @product.first.id.to_s + "/" + @product.first.name.parameterize + "-" + @product_color.color.parameterize + "-700.jpg", :class => "img-responsive") %></a>
         <% elsif FileTest.exist?(Rails.root.to_s + "/app/assets/images/product/" + @product.first.id.to_s + "/" + @product.first.name.parameterize + "-" + @product_color.color.parameterize + "-300.jpg") %>
           <a href="<%= image_url("product/" + @product.first.id.to_s + "/" + @product.first.name.parameterize + "-" + @product_color.color.parameterize + "-700.jpg") %>"><%= image_tag("product/" + @product.first.id.to_s + "/" + @product.first.name.parameterize + "-" + @product_color.color.parameterize + "-300.jpg", :class => "img-responsive") %></a>
+        <% else %>
+          <%= "product/" + @product.first.id.to_s + "/" + @product.first.name.parameterize + "-" + @product_color.color.parameterize + "-700.jpg" %>
         <% end %>
         <!-- Front View -->
         <% if FileTest.exist?(Rails.root.to_s + "/app/assets/images/product/" + @product.first.id.to_s + "/" + @product.first.name.parameterize + "-" + @product_color.color.parameterize + "-700-front.jpg") %>
