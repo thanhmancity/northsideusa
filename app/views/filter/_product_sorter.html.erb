@@ -1,0 +1,9 @@
+<div class="pull-right categorySort">
+  <b>Sort by: </b>
+  <%= link_to "Price-Low to High", men_trail_path(sort_type: :price, type_order: :asc,
+  product_ids: @products.pluck(:id), color_family_id: params[:color_family_id]), remote: true %>
+  <%= link_to "Price-High to Low", men_trail_path(sort_type: :price, type_order: :desc,
+  product_ids: @products.pluck(:id), color_family_id: params[:color_family_id]), remote: true %>
+
+  <%= link_to "Popularity", men_trail_path(sort_type: :popular, product_ids: @products.pluck(:id), type_order: params[:type_order]), remote: true %>
+</div>

@@ -6174,3 +6174,62 @@ div.quickview {
 .white-bg {
     background: #fff;
 }
+
+.categoryContainer {
+    margin-left: 15px;
+}
+
+.categoryFilterBox{
+  height: auto;
+  min-height: 70px;
+  width: auto;
+  border-left: solid 1px #e3e3e3;
+  border-top: solid 8px #393B38 ;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.categoryItem span .subCategory {
+  width: auto;
+  line-height: 60px;
+  text-align: center;
+  margin: 25px;
+  font-size: 22px;
+}
+
+.categoryPlusBtn {
+  background-color: #393B38;
+  padding: 2px 12px;
+  margin-top: 18px;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: none;
+  cursor: pointer;
+  float: right;
+}
+
+.navListCategory {
+  margin-left: 50px;
+  display: none;
+}
+
+.navListCategory li a{
+  font-size: 15px;
+}
+
+.categoryPlusBtn:hover {
+  background-color: #686868;
+}
+
+.categoryPlusBtn i {
+  color: white;
+}
+
+.categorySort a {
+  margin-right: 10px;
+}
+
+#sizesSlider {
+  background: transparent !important;
+}

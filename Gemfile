@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+# gem 'rails', '5.0.0'
+gem 'rails', github: 'rails/rails', branch: "5-0-stable"
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -24,13 +25,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'json', github: 'flori/json', branch: 'v1.8'
 # Sass-powered version of Bootstrap
 gem 'bootstrap-sass'
-
 # MS SQL Server hooks
-gem 'tiny_tds'
-gem 'activerecord-sqlserver-adapter'
+# gem 'activerecord-sqlserver-adapter'
+# gem 'tiny_tds'
 
 # MySQL Server hooks
 gem 'mysql2'
@@ -56,6 +56,7 @@ gem 'friendly_id', '~> 5.1.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry-byebug'
 end
 
 group :development do
