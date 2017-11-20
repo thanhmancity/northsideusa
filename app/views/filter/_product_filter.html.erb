@@ -1,0 +1,82 @@
+<div class="col-lg-9 col-md-9 col-sm-12 productSorterContainer">
+  <%= render "filter/product_sorter" %>
+</div>
+<hr>
+<div class="col-lg-3 col-md-3 col-sm-12">
+  <ul class="nav nav-list categoryFilterBox">
+    <li class="categoryItem">
+      <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="genderTree">
+        <a class="subCategory">Gender</a>
+        <span class="categoryPlusBtn">
+          <i class="fa fa-plus"></i>
+        </span>
+      </span>
+      <ul class="nav-list tree navListCategory" id="genderTree">
+        <li><%= link_to :Male, men_trail_path(filter_type: :gender, sex: :m), remote: true %></li>
+        <li><%= link_to :Female, men_trail_path(filter_type: :gender, sex: :f), remote: true %></li>
+        <li><%= link_to :UnIdentified, men_trail_path(filter_type: :gender, sex: :u), remote: true %></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="nav nav-list categoryFilterBox">
+    <li class="categoryItem">
+      <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="categoryTree">
+        <a class="subCategory">Category</a>
+        <span class="categoryPlusBtn">
+          <i class="fa fa-plus"></i>
+        </span>
+      </span>
+      <ul class="nav-list tree navListCategory" id="categoryTree">
+        <% Category.all.each do |category| %>
+          <li><%= link_to category.category, men_trail_path(filter_type: :category, category_id: category.id), remote: true %></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  <ul class="nav nav-list categoryFilterBox">
+    <li class="categoryItem">
+      <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="colorTree">
+        <a class="subCategory">Color</a>
+        <span class="categoryPlusBtn">
+          <i class="fa fa-plus"></i>
+        </span>
+      </span>
+      <ul class="nav-list tree navListCategory" id="colorTree">
+        <% ColorFamily.all.each do |color| %>
+          <li><%= link_to color.color_family, men_trail_path(filter_type: :color, color_family_id: color.color_family_id), remote: true %></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  <ul class="nav nav-list categoryFilterBox">
+    <li class="categoryItem">
+      <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="sizesTree">
+        <a class="subCategory">Sizes</a>
+        <span class="categoryPlusBtn">
+          <i class="fa fa-plus"></i>
+        </span>
+      </span>
+      <div class="nav-list tree" id="sizesTree" style="display: none;">
+        <div id="sizesSlider"
+          data-min-size="<%= Size.pluck(:size).map(&:to_f).min %>"
+          data-max-size="<%= Size.pluck(:size).map(&:to_f).max %>">
+        </div>
+      </div>
+    </li>
+  </ul>
+  <ul class="nav nav-list categoryFilterBox">
+    <li class="categoryItem">
+      <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="priceTree">
+        <a class="subCategory">Price</a>
+        <span class="categoryPlusBtn">
+          <i class="fa fa-plus"></i>
+        </span>
+      </span>
+      <div class="nav-list tree" id="priceTree" style="display: none;">
+        <div id="priceSlider"
+          data-min-size="<%= Product.pluck(:price).map(&:to_f).min %>"
+          data-max-size="<%= Product.pluck(:price).map(&:to_f).max %>">
+      </div>
+    </li>
+  </ul>
+</div>
