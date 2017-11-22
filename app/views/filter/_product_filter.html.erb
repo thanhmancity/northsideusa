@@ -12,9 +12,18 @@
         </span>
       </span>
       <ul class="nav-list tree navListCategory" id="genderTree">
-        <li><%= link_to :Male, men_trail_path(filter_type: :gender, sex: :m), remote: true %></li>
-        <li><%= link_to :Female, men_trail_path(filter_type: :gender, sex: :f), remote: true %></li>
-        <li><%= link_to :UnIdentified, men_trail_path(filter_type: :gender, sex: :u), remote: true %></li>
+        <li>
+          <%= radio_button_tag :option, nil, {}, class: "radioBtnFilter" %>
+          <%= link_to :Male, men_trail_path(filter_type: :gender, sex: :m), class: 'filterLink', remote: true %>
+        </li>
+        <li>
+          <%= radio_button_tag :option, nil, {}, class: "radioBtnFilter" %>
+          <%= link_to :Female, men_trail_path(filter_type: :gender, sex: :f), class: 'filterLink', remote: true %>
+        </li>
+        <li>
+          <%= radio_button_tag :option, nil, {}, class: "radioBtnFilter" %>
+          <%= link_to :UnIdentified, men_trail_path(filter_type: :gender, sex: :u), class: 'filterLink', remote: true %>
+        </li>
       </ul>
     </li>
   </ul>
@@ -28,7 +37,9 @@
       </span>
       <ul class="nav-list tree navListCategory" id="categoryTree">
         <% Category.all.each do |category| %>
-          <li><%= link_to category.category, men_trail_path(filter_type: :category, category_id: category.id), remote: true %></li>
+          <li>
+            <%= link_to category.category, men_trail_path(filter_type: :category, category_id: category.id), remote: true %>
+          </li>
         <% end %>
       </ul>
     </li>
@@ -43,7 +54,9 @@
       </span>
       <ul class="nav-list tree navListCategory" id="colorTree">
         <% ColorFamily.all.each do |color| %>
-          <li><%= link_to color.color_family, men_trail_path(filter_type: :color, color_family_id: color.color_family_id), remote: true %></li>
+          <li><%= link_to color.color_family, men_trail_path(filter_type: :color, color_family_id: color.color_family_id),
+            remote: true %>
+          </li>
         <% end %>
       </ul>
     </li>
@@ -52,11 +65,8 @@
     <li class="categoryItem">
       <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="sizesTree">
         <a class="subCategory">Sizes</a>
-        <span class="categoryPlusBtn">
-          <i class="fa fa-plus"></i>
-        </span>
       </span>
-      <div class="nav-list tree" id="sizesTree" style="display: none;">
+      <div class="nav-list tree sliderBar" id="sizesTree">
         <div id="sizesSlider"
           data-min-size="<%= Size.pluck(:size).map(&:to_f).min %>"
           data-max-size="<%= Size.pluck(:size).map(&:to_f).max %>">
@@ -68,11 +78,8 @@
     <li class="categoryItem">
       <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="priceTree">
         <a class="subCategory">Price</a>
-        <span class="categoryPlusBtn">
-          <i class="fa fa-plus"></i>
-        </span>
       </span>
-      <div class="nav-list tree" id="priceTree" style="display: none;">
+      <div class="nav-list tree sliderBar" id="priceTree">
         <div id="priceSlider"
           data-min-size="<%= Product.pluck(:price).map(&:to_f).min %>"
           data-max-size="<%= Product.pluck(:price).map(&:to_f).max %>">

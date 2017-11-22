@@ -1,2 +1,6 @@
 $('.categoryProduct').html('<%= j render partial: "product_item", collection: @m_products, as: :product, order_item: @order_item %>');
 $('.productSorterContainer').html('<%= j render "filter/product_sorter" %>');
+$('.sorterLink').css('color', '#454545');
+$('.sorterLink').css('text-decoration', 'none');
+$('.<%= params[:sort_detail] %>').css('color', 'blue');
+$('.<%= params[:sort_detail] %>').css('text-decoration', 'underline');
