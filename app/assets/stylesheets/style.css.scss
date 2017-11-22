@@ -6184,9 +6184,9 @@ div.quickview {
   min-height: 70px;
   width: auto;
   border-left: solid 1px #e3e3e3;
-  border-top: solid 5px #393B38 ;
+  border-top: solid 2px #393B38 ;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  padding-bottom: 10px;
+//   padding-bottom: 10px;
   margin-bottom: 15px;
 }
 
@@ -6195,7 +6195,7 @@ div.quickview {
   line-height: 60px;
   text-align: center;
   margin: 10px;
-  font-size: 22px;
+  font-size: 19px;
 }
 
 .categoryPlusBtn {
@@ -6212,6 +6212,7 @@ div.quickview {
 .navListCategory {
   margin-left: 50px;
   display: none;
+  margin-bottom: 10px;
 }
 
 .navListCategory li a{
@@ -6240,6 +6241,15 @@ div.quickview {
   margin: auto;
 }
 .sorterLink .active{
-  color: blue;
+  color: #2874f0;
   text-decoration: underline;
+}
+
+.filterContainer{
+    background: #fff;
+    padding: 15px;
+}
+
+.fsslider > .fssel-value{
+    background: #EB7203 !important; 
 }

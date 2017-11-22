@@ -2,7 +2,7 @@
   <%= render "filter/product_sorter" %>
 </div>
 <hr>
-<div class="col-lg-3 col-md-3 col-sm-12">
+<div class="col-lg-3 col-md-3 col-sm-12 filterContainer">
   <ul class="nav nav-list categoryFilterBox">
     <li class="categoryItem">
       <span class="tree-toggle nav-header rootTreeCategory" data-active="active" data-list="genderTree">
@@ -22,7 +22,7 @@
         </li>
         <li>
           <%= radio_button_tag :option, nil, {}, class: "radioBtnFilter" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <%= link_to :UnIdentified, men_trail_path(filter_type: :gender, sex: :u), class: 'filterLink', remote: true %>
+          <%= link_to :Kids, men_trail_path(filter_type: :gender, sex: :u), class: 'filterLink', remote: true %>
         </li>
       </ul>
     </li>
