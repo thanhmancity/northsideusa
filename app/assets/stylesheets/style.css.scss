@@ -6194,7 +6194,7 @@ div.quickview {
   width: auto;
   line-height: 60px;
   text-align: center;
-  margin: 25px;
+  margin: 10px;
   font-size: 22px;
 }
 
@@ -6216,6 +6216,7 @@ div.quickview {
 
 .navListCategory li a{
   font-size: 15px;
+  margin-left: -15px;
 }
 
 .categoryPlusBtn:hover {
