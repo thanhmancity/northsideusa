@@ -24,6 +24,11 @@ Rails.application.routes.draw do
   get 'productdetail' => 'productdetail#index'
   get 'productdetail/:id' => 'productdetail#show'
 
+  #config routes products
+  get 'products/:sub_category_tag/:category_tag' => 'products#get_products', as: "get_products"
+
+  #end config routes products
+
   #resources :products, only: [:index, :show, :men]
   get 'products' => 'products#index'
   get 'active' => 'products#active'

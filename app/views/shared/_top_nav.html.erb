@@ -1,0 +1,76 @@
+<div class="navbar-collapse collapse">
+  <ul class="nav navbar-nav">
+    <li class="dropdown">
+      <a href="/about" class="dropdown-toggle disabled" data-toggle="dropdown">About Us <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="/about/whoweare">Who We Are</a></li>
+        <li><a href="/about/brandpromise">Brand Promise</a></li>
+        <li><a href="/about/news">News</a></li>
+      </ul>
+    </li>
+    <% @sub_categories.each do |sub_category| %>
+      <li class="dropdown megamenu-80width">
+        <a data-toggle="dropdown" class="dropdown-toggle disabled" href="javascript:void(0)">
+          <%= sub_category.name %>
+          <b class="caret"> </b>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="megamenu-content ">
+            <ul class="col-lg-4  col-sm-4 col-md-4 unstyled noMarginLeft newCollectionUl">
+              <li class="no-border"><p class="promo-1"><strong> This Season </strong></p></li>
+              <% Category.displayed.each do |category| %>
+                <li>
+                  <%= link_to "#{sub_category.try(:name).try(:upcase)}'S #{category.try(:category).try(:upcase)} SHOES",
+                    get_products_path(sub_category_tag: sub_category.tag,
+                      category_tag: category.try(:tag).try(:downcase)) %>
+                </li>
+              <% end %>
+              <li></li>
+              <li>
+                <%= link_to "ALL #{sub_category.try(:name).try(:upcase)}",
+                  get_products_path(sub_category_tag: sub_category.tag,
+                    category_tag: :all) %>
+              </li>
+            </ul>
+            <% Category.displayed.take(2).each do |category| %>
+              <ul class="col-lg-4  col-sm-4 col-md-4  col-xs-4">
+                <li>
+                  <a class="newProductMenuBlock" href="/men/sport">
+                    <%= image_tag category.try(:image), class: "img-responsive" if category.try(:image) %>
+                    <span class="ProductMenuCaption">
+                      <i class="fa fa-caret-right"> </i>
+                      <%= "#{sub_category.try(:name).try(:upcase)}'S #{category.try(:category).try(:upcase)} SHOES" %>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+    <!-- <li><a href="#"> Find a Retailer </a></li> -->
+    <li class="dropdown">
+      <a href="/customerservice" class="dropdown-toggle disabled" data-toggle="dropdown">Customer Service <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="/contactus">Contact Us</a></li>
+        <li><a href="/termsofservice">Terms of Service</a></li>
+        <li><a href="/privacypolicy">Privacy Policy</a></li>
+        <li><a href="/returns">Return Policy</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <!--- this part will be hidden for mobile version -->
+  <div class="nav navbar-nav navbar-right hidden-xs">
+    <div class="dropdown  cartMenu ">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="nofollow"> <i class="fa fa-shopping-cart"> </i> <span class="cartRespons cart-subtotal"> Cart (<%= render 'layouts/cart_subtotal' %>) </span> <b class="caret"> </b> </a>
+      <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
+        <%= render 'layouts/cart_order_summary' %>
+      </div>
+      <!--/.dropdown-menu-->
+    </div>
+    <!--/.cartMenu-->
+  </div>
+  <!--/.navbar-nav hidden-xs-->
+</div>
