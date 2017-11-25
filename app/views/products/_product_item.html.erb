@@ -1,30 +1,34 @@
-<div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="min-height:429px;">
-  <div class="product">
-    <div class="image">
-      <!--
-      <div class="quickview">
-        <a data-toggle="modal" class="btn btn-xs btn-quickview" href="productmodal" data-target="#productSetailsModalAjax">Quick View </a>
-      </div>
-      -->
-      <a href="/productdetail/<%= product.pcid %>"><%= image_tag("product/" + product.id.to_s + "/" + product.name.parameterize + "-" + product.color.parameterize + "-300.jpg", :class => "img-responsive") %></a>
+<% product.product_colors.each do |product_color| %>
+  <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6" style="min-height:429px;">
+    <div class="product">
+      <div class="image">
+        <!--
+        <div class="quickview">
+          <a data-toggle="modal" class="btn btn-xs btn-quickview" href="productmodal" data-target="#productSetailsModalAjax">Quick View </a>
+        </div>
+        -->
+        <a href="/productdetail/<%= product_color.id %>"><%= image_tag("product/" + product.id.to_s + "/" + product.name.parameterize + "-" + "#{product_color.try(:color).try(:parameterize)}-300.jpg", :class => "img-responsive") %></a>
 
-      <!--<div class="promotion"><span class="new-product"> NEW</span> <span class="discount">15% OFF</span></div>-->
-    </div>
-    <div class="description">
-      <h4><a href="/productdetail/<%= product.pcid %>"><%= product.name %></a></h4>
+        <!--<div class="promotion"><span class="new-product"> NEW</span> <span class="discount">15% OFF</span></div>-->
+      </div>
+      <div class="description">
+        <h4><a href="/productdetail/<%= product_color.id %>"><%= product.name %></a></h4>
 
-      <div class="grid-description">
-        <p><%= product.short_description %></p>
+        <div class="grid-description">
+          <p><%= product.short_description %></p>
+        </div>
+        <div class="list-description">
+          <p><!-- { Long Description } --></p>
+        </div>
+        <!-- <span class="size">{ sizes }</span> -->
       </div>
-      <div class="list-description">
-        <p><!-- { Long Description } --></p>
+      <div class="price"><span><%= number_to_currency product.price %></span></div>
+      <div class="action-control">
+        <!--<a href="/cart" class="btn btn-primary"> <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a>-->
       </div>
-      <!-- <span class="size">{ sizes }</span> -->
-    </div>
-    <div class="price"><span><%= number_to_currency product.price %></span></div>
-    <div class="action-control">
-      <!--<a href="/cart" class="btn btn-primary"> <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a>-->
     </div>
   </div>
-</div>
-<!--/.item-->
+  <!--/.item-->
+<% end %>
+
+

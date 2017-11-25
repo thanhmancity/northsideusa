@@ -1,6 +1,5 @@
 class ProductsFkProductcolors < ActiveRecord::Migration
   def change
-    add_foreign_key "product_colors", "products"
-    add_foreign_key "sizes", "product_colors"
+    add_column :sizes, :product_color_id, :integer
   end
 end

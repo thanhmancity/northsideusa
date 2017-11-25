@@ -3,6 +3,8 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
       t.string :name, limit: 255
       t.string :short_description, limit: 255
+      t.string :gender, default: :u
+      t.string :age_group, default: :a
       t.text :long_description
       t.decimal :cost, precision: 9, scale: 2
       t.decimal :price, precision: 9, scale: 2
