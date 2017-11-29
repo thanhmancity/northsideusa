@@ -25,4 +25,9 @@ $(document).on('ready', function () {
   $(document).on('click', '.filterLink', function(){
     $(this).prev().attr('checked', 'checked');
   });
+
+  $(document).on('click', '.link-filter', function(){
+    $('.link-filter').css('color', '#454545');
+    $(this).css('color', 'blue');
+  });
 });

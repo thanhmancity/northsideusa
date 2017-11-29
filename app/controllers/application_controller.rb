@@ -71,6 +71,7 @@ class ApplicationController < ActionController::Base
     else
       products = products
     end
+    products
   end
 
   def filter_by_type products
@@ -97,8 +98,8 @@ class ApplicationController < ActionController::Base
       category = Category.find_by(id: params[:category_id])
       products = category.products if category
     when :color
-      session[:filter] = params[:color_family_id]
-      products = Product.joins(:product_colors).where('product_colors.color_family_id = ?', params[:color_family_id])
+      session[:filter] = params[:color_family_id].map(&:to_i)
+      products = Product.joins(:product_colors).where('product_colors.color_family_id IN (?)', params[:color_family_id].map(&:to_i))
     when :size
       params_size = params[:size].to_f.round(1)
       params[:size] = (params_size == params_size.to_i) ? params_size.to_i :  params_size
@@ -111,18 +112,13 @@ class ApplicationController < ActionController::Base
       params[:price] = {min_price:min_price,max_price: max_price}
       products = Product.order(:name).where(price: min_price..max_price).uniq
     end
-
     products = sorter if params[:sort_type].present?
     if session[:filter_type].try(:to_sym).eql?(:color)
-      @m_products = products.select('products.*, product_colors.color, product_colors.id AS pcid').where('product_colors.color_family_id = ?', session[:filter])
+      @products = products.select('products.*, product_colors.color, product_colors.id AS pcid').where('product_colors.color_family_id IN (?)', session[:filter])
     else
-      if params[:sort_type].eql?('popular')
-        @m_products = products
-      else
-        @m_products = products
-      end
+      @products = products
     end
-    session[:product_ids] = @m_products.pluck(:id) if params[:filter_type].present?
+    session[:product_ids] = @products.pluck(:id) if params[:filter_type].present?
   end
 
   def load_sub_categories

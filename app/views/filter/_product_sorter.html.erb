@@ -1,9 +1,9 @@
 <div class="pull-right categorySort">
   <b>Sort by: </b>
-  <%= link_to "Price-Low to High", men_trail_path(sort_type: :price, type_order: :asc,
+  <%= link_to "Price-Low to High", get_products_path(sort_type: :price, type_order: :asc,
     color_family_id: params[:color_family_id], sort_detail: :up), remote: true, class: 'sorterLink up' %>
-  <%= link_to "Price-High to Low", men_trail_path(sort_type: :price, type_order: :desc,
+  <%= link_to "Price-High to Low", get_products_path(sort_type: :price, type_order: :desc,
     color_family_id: params[:color_family_id], sort_detail: :down), remote: true, class: 'sorterLink down' %>
-  <%= link_to "Popularity", men_trail_path(sort_type: :popular, type_order: params[:type_order], sort_detail: :popular),
+  <%= link_to "Popularity", get_products_path(sort_type: :popular, type_order: params[:type_order], sort_detail: :popular),
     remote: true, class: 'sorterLink popular' %>
 </div>

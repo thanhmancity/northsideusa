@@ -220,7 +220,7 @@ class ProductsController < ApplicationController
     end
     @order_item = current_order.order_items.new
     session[:filter_type] = nil
-    session[:product_ids] = @products.pluck(:id)
+    session[:product_ids] = @products.pluck(:id) if request.format.html?
     filter if request.format.js?
   end
 

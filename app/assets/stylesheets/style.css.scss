@@ -6251,5 +6251,20 @@ div.quickview {
 }
 
 .fsslider > .fssel-value{
-    background: #EB7203 !important; 
+    background: #EB7203 !important;
+}
+
+.container-title-filter {
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: Bold;
+}
+
+.container-title-filter a {
+  color: blue;
+  font-size: 14px;
+}
+
+.color-family-item {
+  cursor: pointer;
 }
